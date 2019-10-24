@@ -1,0 +1,82 @@
+<section class="main">
+  <header>
+    {{ challenge.slug }}
+    <button
+      *ngIf="!countdownsPermitted"
+      id="info-toggle-button"
+      class="header-button active"
+      (click)="toggleContent(false)"
+    >
+      اطلاعات بیشتر
+    </button>
+    <button
+      *ngIf="!countdownsPermitted && isPlayerIn"
+      id="share-toggle-button"
+      class="header-button share"
+      (click)="toggleContent(true)"
+    >
+      اشتراک گذاری
+    </button>
+  </header>
+  <div *ngIf="toggleContentState" class="main-content share">
+    <div class="main-left-column">
+      <app-share
+        *ngIf="sharingSectionPermitted"
+        [instancePath]="challengePath"
+        [instanceName]="challenge.slug"
+        [showLink]="true"
+        [isPlayerIn]="isPlayerIn"
+      ></app-share>
+    </div>
+  </div>
+  <div
+    *ngIf="
+      (!toggleContentState && deviceWidth >= 600) ||
+      (deviceWidth < 600 && !challenge.isFilled && !isPlayerIn)
+    "
+    class="main-content normal"
+  >
+    <div class="main-left-column">
+      <app-details
+        [leftColumn]="true"
+        [extraContentLeft]="!countdownsPermitted && isPlayerIn"
+        [rightColumn]="false"
+        [extraContentRight]="false"
+        [challenge]="challenge"
+        [game]="game"
+        [isPlayerIn]="isPlayerIn"
+      ></app-details>
+    </div>
+    <div class="main-right-column">
+      <app-details
+        [leftColumn]="false"
+        [extraContentLeft]="false"
+        [rightColumn]="true"
+        [extraContentRight]="!countdownsPermitted && isPlayerIn"
+        [challenge]="challenge"
+        [game]="game"
+        [isPlayerIn]="isPlayerIn"
+      ></app-details>
+    </div>
+  </div>
+  <!-- In case of showing the countdowns -->
+  <div *ngIf="countdownsPermitted" class="main-content countdown-container">
+    <div *ngIf="!challenge.isFilled && isPlayerIn" class="players-countdown">
+      <div class="number">
+        <span class="player-text">بازیکن</span>
+        <span class="player-number">{{ toFarsiNumber(playersNeeded) }}</span>
+      </div>
+
+      <span
+        *ngFor="let player of playersNeededArray"
+        class="players-placeholder"
+      ></span>
+    </div>
+
+    <app-countdown
+      *ngIf="challenge.isFilled && isPlayerIn"
+      [startTime]="challenge.startTime"
+      [showHelperText]="true"
+    ></app-countdown>
+  </div>
+</section>

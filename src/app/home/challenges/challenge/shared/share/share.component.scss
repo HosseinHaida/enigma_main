@@ -1,0 +1,56 @@
+.qrcode,
+.qrcode-link {
+  display: inline-block;
+}
+.qrcode-link {
+  vertical-align: top;
+  margin: 32px 0 0 7px;
+  > .qrcode-link-anchor,
+  > .invitation-code {
+    border-radius: 15px;
+    padding: 2px 10px 3px 10px;
+    text-decoration: none;
+    background-color: rgb(100, 100, 100);
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 13px;
+  }
+  > .qrcode-link-anchor {
+    text-decoration: underline;
+  }
+  > .invitation-code {
+    position: relative;
+    top: 7px;
+  }
+}
+
+.qrcode > img {
+  width: 110px;
+}
+
+@media only screen and (max-width: 600px) {
+  .qrcode {
+    display: block;
+    text-align: center;
+    margin: 0 10px;
+    background-color: white;
+    > img {
+      width: 120px;
+    }
+  }
+  .qrcode-link {
+    float: right;
+    text-align: right;
+    margin: 10px;
+    > .qrcode-link-anchor,
+    > .invitation-code {
+      border-radius: 3px;
+      padding: 2px 10px 5px 10px;
+      font-size: 14px;
+    }
+    > .invitation-code {
+      position: relative;
+      top: 10px;
+    }
+  }
+}

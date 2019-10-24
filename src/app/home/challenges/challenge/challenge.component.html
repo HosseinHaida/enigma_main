@@ -1,0 +1,135 @@
+<div class="sidebar-placeholder"></div>
+<!-- Content on big screens -->
+<main *ngIf="deviceWidth > 600">
+  <!-- Left Column -->
+  <div class="left-column">
+    <app-players
+      class="players"
+      [players]="challenge.players"
+      [showHeader]="true"
+    ></app-players>
+  </div>
+  <!-- Right Column -->
+  <div class="right-column">
+    <!-- Main infos section -->
+    <app-main
+      [challenge]="challenge"
+      [isPlayerIn]="isPlayerIn"
+      [playersNeeded]="playersNeeded"
+      [countdownsPermitted]="false"
+      [sharingSectionPermitted]="true"
+    ></app-main>
+    <!-- Extra infos section -->
+    <app-extras
+      [challenge]="challenge"
+      [isPlayerIn]="isPlayerIn"
+      [playersNeeded]="playersNeeded"
+      [correspondingHeader]="bigScreensCorrespondingHeader"
+      [countdownsPermitted]="true"
+      [showExtraContent]="false"
+    ></app-extras>
+    <!-- Buttons section -->
+    <section class="buttons">
+      <button *ngIf="!isPlayerIn && !isFilled" class="sign">ورود</button
+      ><button
+        *ngIf="isPlayerIn && challengeHasAlreadyStarted(challenge.startTime)"
+        class="sign"
+      >
+        شروع بازی</button
+      ><button class="cancel">برگشتن</button>
+    </section>
+  </div>
+</main>
+
+<!-- Content on small screens -->
+<main class="small-screens" *ngIf="deviceWidth <= 600">
+  <div class="slides-container">
+    <!-- Tab buttons -->
+    <div class="tabs">
+      <button class="tab-links share-tab" (click)="openTab($event, 'share')">
+        اشتراک
+      </button>
+      <span class="underline"></span>
+      <button
+        class="tab-links players-tab"
+        (click)="openTab($event, 'players')"
+      >
+        بازیکنان
+      </button>
+      <span class="underline"></span>
+
+      <button class="tab-links extras-tab" (click)="openTab($event, 'extras')">
+        سایر
+      </button>
+      <span class="underline"></span>
+      <button
+        class="tab-links info-tab active"
+        (click)="openTab($event, 'info')"
+      >
+        {{ smallScreensCorrespondingHeader }}
+      </button>
+      <span class="underline"></span>
+    </div>
+    <!-- End of tab buttons -->
+
+    <!-- SHARING section -->
+    <section id="share" class="tab-content">
+      <header>{{ challenge.slug }}</header>
+      <app-share
+        [instancePath]="challengePath"
+        [instanceName]="challenge.slug"
+        [showLink]="true"
+        [isPlayerIn]="isPlayerIn"
+      ></app-share>
+    </section>
+    <!-- End of SHARING section -->
+
+    <!-- PLAYERS section -->
+    <section id="players" class="tab-content">
+      <app-players
+        class="players"
+        [players]="challenge.players"
+        [showHeader]="false"
+      ></app-players>
+    </section>
+    <!-- End of PLAYERS section -->
+
+    <!-- EXTRAS section -->
+    <section id="extras" class="tab-content">
+      <app-extras
+        [challenge]="challenge"
+        [isPlayerIn]="isPlayerIn"
+        [playersNeeded]="playersNeeded"
+        [correspondingHeader]="challenge.slug"
+        [countdownsPermitted]="false"
+        [showExtraContent]="
+          challenge.startTime !== '' || (isPlayerIn && playersNeeded >= 0)
+        "
+      ></app-extras>
+    </section>
+    <!-- End of EXTRAS section -->
+
+    <!-- INFO section -->
+    <section id="info" class="tab-content info">
+      <app-main
+        [challenge]="challenge"
+        [isPlayerIn]="isPlayerIn"
+        [playersNeeded]="playersNeeded"
+        [countdownsPermitted]="true"
+        [sharingSectionPermitted]="false"
+      ></app-main>
+    </section>
+    <!-- End of INFO section -->
+
+    <section class="buttons">
+      <button *ngIf="!isPlayerIn && !isFilled" class="sign">ورود</button
+      ><button
+        *ngIf="isPlayerIn && challengeHasAlreadyStarted(startTime)"
+        class="sign"
+      >
+        شروع بازی
+      </button>
+      <button class="cancel">برگشتن</button>
+    </section>
+  </div>
+</main>

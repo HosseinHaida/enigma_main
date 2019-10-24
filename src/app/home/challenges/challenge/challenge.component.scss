@@ -1,0 +1,132 @@
+@import '../../../scss/mixins';
+
+section > header,
+section > div > header {
+  @include header-style();
+}
+
+button {
+  padding: 7px 13px 9px 13px;
+  cursor: pointer;
+  border: none;
+  width: 50%;
+  outline: none;
+}
+
+button.sign {
+  background-color: #35469c;
+  color: whitesmoke;
+}
+button.cancel {
+  background: none;
+  margin-left: auto;
+}
+.buttons {
+  height: 45px;
+  margin: 9px 0 15px 9px;
+  @include display-flex();
+}
+
+.buttons {
+  border: 2px solid rgb(100, 100, 100);
+}
+@media only screen and (min-width: 600px) {
+  .sidebar-placeholder {
+    width: 47px;
+    height: 221px;
+    position: relative;
+    top: 37px;
+    right: 17px;
+    float: right;
+    margin-left: 35px;
+    visibility: hidden;
+  }
+  main {
+    max-width: 700px;
+    @include display-flex();
+    text-align: right;
+    margin: 60px auto 0 auto;
+  }
+  .left-column {
+    @include flex(1);
+  }
+  .right-column {
+    @include flex(2);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  main.small-screens {
+    margin-top: 60px;
+    width: 100%;
+  }
+  // Tab links and contents
+  .tabs {
+    margin: 0 10px;
+    text-align: center;
+    background-color: #f7f7f7;
+    > button.tab-links {
+      font-weight: 200;
+      font-size: 15px;
+      background-color: inherit;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 12px 14px;
+      width: 25%;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      overflow: hidden;
+    }
+    > button.tab-links.active {
+      background-color: rgb(235, 235, 235);
+      border-top: 2px solid rgb(100, 100, 100);
+      border-right: 2px solid rgb(100, 100, 100);
+      border-left: 2px solid rgb(100, 100, 100);
+      font-weight: 900;
+    }
+    > button.tab-links.active + span.underline {
+      display: inline-block;
+      border-right: 2px solid rgb(100, 100, 100);
+      background-color: rgb(235, 235, 235);
+      height: 2px;
+      width: calc(25% - 4px);
+      margin-left: calc(-25% + 2px);
+      margin-bottom: -18px;
+    }
+  }
+  .tab-content {
+    display: none;
+  }
+  .tab-content.info {
+    display: block;
+  }
+  .tab-content {
+    background-color: rgb(235, 235, 235);
+    margin: 0 10px 10px 10px;
+    padding-top: 15px;
+    height: 68vh;
+    min-height: 350px;
+    border: 2px solid rgb(100, 100, 100);
+  }
+
+  #share > header {
+    margin: 0 10px;
+  }
+
+  .buttons {
+    height: 40px;
+    margin: 10px;
+    @include display-flex();
+  }
+}
+// End of Tab links and contents
+
+@media only screen and (max-width: 660px) {
+  .sidebar-placeholder {
+    display: none;
+  }
+  main {
+    margin-right: 10px;
+  }
+}

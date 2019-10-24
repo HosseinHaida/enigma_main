@@ -1,0 +1,136 @@
+a {
+  cursor: pointer;
+}
+nav {
+  background-color: white;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 55px;
+  justify-content: flex-end;
+  transition: top 200ms;
+}
+nav > .top-nav-menu {
+  z-index: 2;
+  position: relative;
+}
+nav > .top-nav-menu > a,
+nav > .top-nav-menu > button {
+  vertical-align: middle;
+}
+nav > .top-nav-menu > a {
+  text-align: center;
+  width: 70px;
+  display: inline-block;
+  color: rgb(59, 59, 59);
+}
+nav > .top-nav-menu > button {
+  cursor: pointer;
+  width: 60px;
+  color: rgb(59, 59, 59);
+  background: none;
+  border: none;
+  display: none;
+}
+nav > .top-nav-menu > button > i {
+  font-style: normal;
+  font-size: 28px;
+}
+nav > .top-nav-menu > a.logo {
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  width: 120px;
+}
+aside {
+  z-index: 2;
+  background-color: white;
+  transition: max-height 140ms linear;
+  position: fixed;
+  top: 80px;
+  right: 0;
+  border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border: 1.5px solid rgb(100, 100, 100);
+  width: 47px;
+  margin: 10px 15px 0 0;
+}
+aside > a {
+  display: block;
+  text-align: center;
+  padding: 9px 0;
+  color: rgb(71, 71, 71);
+}
+aside > a:hover {
+  background-color: rgb(71, 71, 71);
+  color: whitesmoke;
+}
+aside > a:first-child {
+  margin: -1.5px -1.5px 0 -1.5px;
+  border-radius: 9px 9px 0 0;
+  -webkit-border-radius: 9px 9px 0 0;
+  -moz-border-radius: 9px 9px 0 0;
+}
+aside > a:last-child {
+  margin: 0 -1.5px -1.5px -1.5px;
+  border-radius: 0 0 9px 9px;
+  -webkit-border-radius: 0 0 9px 9px;
+  -moz-border-radius: 0 0 9px 9px;
+}
+aside > a > i {
+  font-size: 33px;
+  font-style: normal;
+}
+@media only screen and (min-width: 661px) {
+  nav {
+    padding: 20px 30px 0 0;
+  }
+}
+@media only screen and (max-width: 660px) {
+  nav > .top-nav-menu > a {
+    width: 60px;
+  }
+  nav > .top-nav-menu {
+    margin: auto 5px auto 0;
+  }
+  nav > .top-nav-menu > button {
+    display: inline-block;
+    width: 70px;
+  }
+  aside {
+    border: none;
+    overflow: hidden;
+    max-height: 0;
+    width: 60px;
+    top: 70px;
+  }
+  aside.shown {
+    max-height: 230px;
+    border: 1px solid white;
+  }
+  div.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.678);
+  }
+  div.overlay.shown {
+    display: block;
+  }
+}
+@media only screen and (max-width: 370px) {
+  nav > .top-nav-menu > a {
+    width: 45px;
+  }
+  nav > .top-nav-menu > button {
+    width: 35px;
+  }
+}

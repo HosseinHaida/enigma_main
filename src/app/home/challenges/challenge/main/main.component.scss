@@ -1,0 +1,75 @@
+@import '../../../../scss/mixins';
+@import '../../../../scss/players-countdown';
+
+.main {
+  border: 2px solid rgb(100, 100, 100);
+  height: 200px;
+  margin: 15px 0 9px 9px;
+  > header {
+    @include header-style();
+    margin-bottom: 10px;
+    > .header-button {
+      float: left;
+      background-color: rgb(100, 100, 100);
+      color: white;
+      border: none;
+      padding: 5px 10px 8px 10px;
+      margin-top: -3px;
+      cursor: pointer;
+      outline: none;
+      &.share {
+        margin-left: 2px;
+      }
+      &.active {
+        background-color: white;
+        color: initial;
+      }
+    }
+  }
+  > .main-content {
+    @include display-flex();
+    > .main-left-column,
+    > .main-right-column {
+      @include flex(1);
+    }
+    > .main-right-column > h5 {
+      text-align: center;
+    }
+  }
+}
+
+// Player countdown
+.players-countdown > .number {
+  > .player-text {
+    float: left;
+    margin-left: 10px;
+  }
+  > .player-number {
+    float: right;
+    margin-right: 10px;
+  }
+}
+
+.share > .main-left-column {
+  text-align: left;
+  padding: 20px 0 0 35px;
+}
+
+.main > .main-content.normal {
+  color: rgb(71, 71, 71);
+  padding-top: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  .main {
+    border: none;
+    margin: 0 10px;
+    > .main-content {
+      display: block;
+      > .main-left-column,
+      > .main-right-column {
+        text-align: right;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@mixin display-flex() {
+  display: flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}
+@mixin flex($flexwidth) {
+  flex: $flexwidth;
+  -moz-flex: $flexwidth;
+  -webkit-flex: $flexwidth;
+}
+@mixin header-style() {
+  color: whitesmoke;
+  text-align: right;
+  background-color: rgb(100, 100, 100);
+  padding: 3px 8px 6px 0;
+}

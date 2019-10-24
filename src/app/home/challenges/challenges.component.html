@@ -1,0 +1,15 @@
+<main>
+  <section
+    *ngFor="let equivalentGame of equivalentGames; let i = index"
+    (click)="onChallengeClick(equivalentGame.id)"
+  >
+    <span class="number-badge">{{ i + 1 }}</span>
+    <header>{{ equivalentGame.slug }}</header>
+    <span class="fontawesome-money cost-badge-icon">
+      <span class="cost-badge">{{ equivalentGame.cost }}</span>
+    </span>
+    <span class="typicons-group players-badge-icon">
+      <span class="players-badge">{{ equivalentGame.players }}</span>
+    </span>
+  </section>
+</main>

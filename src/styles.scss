@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import url(http://weloveiconfonts.com/api/?family=entypo|iconicfill|openwebicons|typicons|fontawesome);
+
+[class*='entypo-']:before {
+  font-family: 'entypo', sans-serif;
+}
+[class*='openwebicons-']:before {
+  font-family: 'OpenWeb Icons', sans-serif;
+}
+[class*='iconicfill-']:before {
+  font-family: 'IconicFill', sans-serif;
+}
+[class*='typicons-']:before {
+  font-family: 'typicons', sans-serif;
+}
+[class*='fontawesome-']:before {
+  font-family: 'fontawesome', sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,92 @@
+@import '../../../../scss/mixins';
+
+.players {
+  // overflow-y: scroll;
+  border: 2px solid rgb(100, 100, 100);
+  margin: 15px 0 15px 9px;
+  height: 471px;
+  > header {
+    @include header-style();
+    margin-bottom: 10px;
+  }
+  .player-container {
+    width: 100%;
+    background-color: whitesmoke;
+    height: 40px;
+    margin-bottom: 10px;
+    text-align: left;
+    @include display-flex();
+    > .player-left-column {
+      @include flex(1);
+      > .avatar {
+        width: 40px;
+        height: 40px;
+        margin: 0 6px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+      }
+    }
+    > .player-right-column {
+      @include flex(3);
+      padding-right: 10px;
+      > .username {
+        margin-top: 8px;
+        font-size: 11px;
+        font-family: Courier, monospace;
+        margin-bottom: 5px;
+      }
+      > .user-level {
+        width: 5%;
+        height: 10px;
+        position: relative;
+        bottom: 0;
+        background: #35469c;
+        color: whitesmoke;
+        font: bold 10px courier;
+        padding: 2px 0 1px 0;
+        text-align: center;
+        -webkit-animation: filler 0.6s ease-in-out;
+        -moz-animation: filler 0.6s ease-in-out;
+        animation: filler 0.6s ease-in-out;
+      }
+    }
+  }
+}
+
+// Keyframes for user level filling animation
+@-webkit-keyframes filler {
+  0% {
+    width: 0;
+  }
+}
+@-moz-keyframes filler {
+  0% {
+    width: 0;
+  }
+}
+@keyframes filler {
+  0% {
+    width: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .players {
+    margin: 15px 0 0 0;
+    border: none;
+    .player-container {
+      background-color: white;
+      > .player-left-column {
+        @include flex(1);
+      }
+      > .player-right-column {
+        @include flex(6);
+        padding-right: 10px;
+      }
+    }
+  }
+}

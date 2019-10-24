@@ -1,0 +1,59 @@
+<section
+  class="extras"
+  [ngStyle]="{
+    'background-color':
+      challenge.startTime !== '' || (!challenge.isFilled && isPlayerIn)
+        ? 'whitesmoke'
+        : 'white'
+  }"
+>
+  <header>{{ correspondingHeader }}</header>
+
+  <!-- In case of showing players countdown -->
+  <div
+    *ngIf="!challenge.isFilled && isPlayerIn && countdownsPermitted"
+    class="main-content countdown-container"
+  >
+    <div class="players-countdown">
+      <div class="number">{{ toFarsiNumber(playersNeeded) }}</div>
+      <span
+        *ngFor="let player of playersNeededArray"
+        class="players-placeholder"
+      ></span>
+    </div>
+  </div>
+
+  <!-- In case of showing the clock countdown -->
+  <app-countdown
+    *ngIf="challenge.isFilled && isPlayerIn && countdownsPermitted"
+    [startTime]="challenge.startTime"
+    [showHelperText]="false"
+  ></app-countdown>
+
+  <!-- In case user is not signed nor the game is filled (normal mode) -->
+  <div
+    *ngIf="(!challenge.isFilled && !isPlayerIn) || !countdownsPermitted"
+    class="main-content normal"
+  >
+    <div class="main-left-column">
+      <app-share
+        *ngIf="!challenge.isFilled && !isPlayerIn && countdownsPermitted"
+        [instancePath]="challengePath"
+        [instanceName]="challenge.slug"
+        [showLink]="false"
+        [isPlayerIn]="isPlayerIn"
+      ></app-share>
+    </div>
+    <div class="main-right-column">
+      <app-details
+        [leftColumn]="!countdownsPermitted && showExtraContent"
+        [extraContentLeft]="true"
+        [rightColumn]="!countdownsPermitted && showExtraContent"
+        [extraContentRight]="true"
+        [challenge]="challenge"
+        [game]="game"
+        [isPlayerIn]="isPlayerIn"
+      ></app-details>
+    </div>
+  </div>
+</section>

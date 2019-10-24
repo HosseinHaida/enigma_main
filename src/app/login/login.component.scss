@@ -1,0 +1,131 @@
+@import '../scss/mixins';
+
+.forms-container {
+  @include display-flex();
+  max-width: 700px;
+  height: 400px;
+  margin: 120px auto 0 auto;
+  //   SIGNUP
+  > .signup {
+    > h3 {
+      color: white;
+    }
+    form {
+      > .username,
+      > .password,
+      > .cellphone {
+        > input {
+          background-color: #35469c;
+          border: 2px solid white;
+          color: white;
+          &::placeholder {
+            color: white;
+          }
+        }
+      }
+      .cellphone {
+        margin-top: 50px;
+      }
+      .username,
+      .password {
+        margin-top: 25px;
+      }
+      > .button {
+        margin-top: 25px;
+        > button {
+          background-color: white;
+          color: #35469c;
+        }
+      }
+    }
+  }
+  //   LOGIN
+  > .login {
+    // margin-right: -150px;
+    // z-index: 100;
+    > h3 {
+      color: #35469c;
+    }
+    form {
+      > .username,
+      > .password {
+        > input {
+          border: 2px solid #35469c;
+          color: #35469c;
+          &::placeholder,
+          &::-webkit-input-placeholder,
+          &::-webkit-input-placeholder {
+            color: #35469c;
+          }
+        }
+      }
+      > .username {
+        margin-top: 50px;
+      }
+      > .password {
+        margin-top: 25px;
+      }
+      > .button {
+        margin-top: 94px;
+        > button {
+          background-color: #35469c;
+          color: #fff;
+        }
+      }
+    }
+  }
+  //   SIGNUP & LOGIN
+  > .login,
+  > .signup {
+    @include flex(1);
+    min-width: 200px;
+    height: 100%;
+    > h3 {
+      text-align: center;
+    }
+    background-color: white;
+    > form {
+      > .username,
+      > .password,
+      > .cellphone {
+        text-align: center;
+        > input {
+          width: 75%;
+          outline: none;
+          text-align: right;
+          height: 28px;
+          padding: 6px 7px;
+          font-size: 16px;
+          font-weight: bold;
+          border-radius: 3px;
+          &:focus {
+            text-align: left;
+          }
+          &::placeholder,
+          &::-webkit-input-placeholder,
+          &::-webkit-input-placeholder {
+            font-weight: normal;
+          }
+        }
+      }
+      > .button {
+        text-align: center;
+        > button {
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: bold;
+          width: calc(75% + 18px);
+          padding: 10px 8px 14px 8px;
+          border: none;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+  > .signup {
+    background-color: #35469c;
+  }
+  //   > .login {
+  //     background-color: transparent;
+  //   }
+}

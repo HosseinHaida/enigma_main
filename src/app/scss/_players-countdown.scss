@@ -1,0 +1,38 @@
+.countdown-container {
+  text-align: center;
+  > .players-countdown {
+    margin: auto;
+    text-align: center;
+    > .players-placeholder {
+      display: inline-block;
+      background-color: #35469c;
+      border-radius: 3px;
+      margin: 2.5px;
+      width: 10px;
+      height: 10px;
+      color: transparent;
+    }
+    > .number {
+      margin: auto;
+      color: #fff;
+      border-radius: 3px;
+      padding: 4px 0 3px 0;
+      font-weight: bold;
+      height: 21px;
+      margin-bottom: 3px;
+      background-color: #35469c;
+      border-radius: 0;
+      min-width: 20px;
+      width: calc(100% - 5px);
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .countdown-container {
+    margin-top: -5px;
+    > .players-countdown > .number {
+      width: 100%;
+    }
+  }
+}

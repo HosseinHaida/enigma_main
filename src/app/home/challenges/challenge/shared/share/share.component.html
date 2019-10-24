@@ -1,0 +1,8 @@
+<div class="qrcode"><img [src]="qrCode" alt="QRCode" /></div>
+<div class="qrcode-link" *ngIf="showLink">
+  <a class="qrcode-link-anchor" [href]="instancePath">{{ instanceName }} @</a
+  ><br />
+  <span *ngIf="isPlayerIn" class="invitation-code"
+    >{{ invitationCode }} : کد دعوت
+  </span>
+</div>

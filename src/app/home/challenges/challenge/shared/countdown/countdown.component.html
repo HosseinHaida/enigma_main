@@ -1,0 +1,23 @@
+<div *ngIf="startTime" class="main-content">
+  <div id="countdown" class="countdown">
+    <div>
+      <span class="days"></span>
+      <div class="smalltext">روز</div>
+    </div>
+    <div>
+      <span class="hours"></span>
+      <div class="smalltext">ساعت</div>
+    </div>
+    <div>
+      <span class="minutes"></span>
+      <div class="smalltext">دقیقه</div>
+    </div>
+    <div>
+      <span class="seconds"></span>
+      <div class="smalltext">ثانیه</div>
+    </div>
+    <div *ngIf="showHelperText" id="helper-text">
+      تا شروع بازی
+    </div>
+  </div>
+</div>
