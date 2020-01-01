@@ -18,11 +18,16 @@ export class ChallengesComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private mainService: MainService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.challenges = this.mainService.getChallenges();
     this.games = this.mainService.getGames();
+
+    // console.log(this.challenges[0].id)
+    // console.log(this.challenges[0].slug)
+    // console.log(this.challenges[0].players ? Object.keys(this.challenges[0].players).length : 0)
+    // console.log(this.games[0].cost)
 
     this.equivalentGames = new Array<Object>();
     this.challenges.forEach(challenge => {
@@ -31,11 +36,12 @@ export class ChallengesComponent implements OnInit {
           this.equivalentGames.push({
             id: challenge.id,
             slug: challenge.slug,
-            players: Object.keys(challenge.players).length,
+            players: challenge.players ? Object.keys(challenge.players).length : 0,
             cost: game.cost
           });
         }
       }
+      // console.log(this.equivalentGames)
     });
   }
 

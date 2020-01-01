@@ -28,7 +28,7 @@ export class ChallengeComponent implements OnInit {
     private route: ActivatedRoute,
     private mainService: MainService,
     private screenLayoutService: ScreenLayoutService
-  ) {}
+  ) { }
 
   ngOnInit() {
     // Subscribe to screen width changes
@@ -38,7 +38,7 @@ export class ChallengeComponent implements OnInit {
     });
     // Set challenge from the URL
     this.route.params.subscribe((params: Params) => {
-      const challengeId = Number(params['id']);
+      const challengeId = params['id'];
       this.challenge = this.mainService.getChallenge(challengeId);
       this.game = this.mainService.getGame(this.challenge.gameId);
 

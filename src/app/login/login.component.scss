@@ -1,116 +1,112 @@
 @import '../scss/mixins';
 
+//  Form Type
+.form-type-btn-group {
+  margin-top: 60px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttongroup {
+  text-align: center;
+}
+
+.buttongroup label{
+  border: 1px solid #fff;
+  padding: 9px 20px 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  background-color: #fff;
+  transition: all 0.2s;
+}
+
+.buttongroup label:not(:first-of-type){
+  border-left: 0;
+}
+
+.buttongroup label:hover{
+  background-color: #35469c21;
+}
+
+/* Hide the radio button */
+input[name='type']{ 
+  display:none;
+}
+
+/* The checked buttons label style */
+input[name='type']:checked+label{
+  background-color: #35469c;
+  color: #fff
+}
+//  End of formType
+
 .forms-container {
   @include display-flex();
-  max-width: 700px;
+  max-width: 500px;
   height: 400px;
-  margin: 120px auto 0 auto;
-  //   SIGNUP
-  > .signup {
-    > h3 {
-      color: white;
-    }
-    form {
-      > .username,
-      > .password,
-      > .cellphone {
-        > input {
-          background-color: #35469c;
-          border: 2px solid white;
-          color: white;
-          &::placeholder {
-            color: white;
-          }
-        }
-      }
-      .cellphone {
-        margin-top: 50px;
-      }
-      .username,
-      .password {
-        margin-top: 25px;
-      }
-      > .button {
-        margin-top: 25px;
-        > button {
-          background-color: white;
-          color: #35469c;
-        }
-      }
-    }
-  }
-  //   LOGIN
-  > .login {
-    // margin-right: -150px;
-    // z-index: 100;
-    > h3 {
-      color: #35469c;
-    }
-    form {
-      > .username,
-      > .password {
-        > input {
-          border: 2px solid #35469c;
-          color: #35469c;
-          &::placeholder,
-          &::-webkit-input-placeholder,
-          &::-webkit-input-placeholder {
-            color: #35469c;
-          }
-        }
-      }
-      > .username {
-        margin-top: 50px;
-      }
-      > .password {
-        margin-top: 25px;
-      }
-      > .button {
-        margin-top: 94px;
-        > button {
-          background-color: #35469c;
-          color: #fff;
-        }
-      }
-    }
-  }
-  //   SIGNUP & LOGIN
+  margin: 60px auto;
+  padding-bottom: 60px;
   > .login,
   > .signup {
     @include flex(1);
     min-width: 200px;
     height: 100%;
-    > h3 {
-      text-align: center;
-    }
     background-color: white;
-    > form {
+    text-align: center;
+    form {
       > .username,
       > .password,
-      > .cellphone {
-        text-align: center;
+      > .cellphone,
+      > .display-name,
+      > .photo-url {
         > input {
+          font-size: 16px;
+          border: 2px solid #35469c;
+          color: #35469c;
           width: 75%;
           outline: none;
-          text-align: right;
+          text-align: center;
           height: 28px;
           padding: 6px 7px;
-          font-size: 16px;
           font-weight: bold;
           border-radius: 3px;
-          &:focus {
-            text-align: left;
-          }
           &::placeholder,
           &::-webkit-input-placeholder,
           &::-webkit-input-placeholder {
             font-weight: normal;
+            color: #35469c;
+          }
+        }
+      }
+      > .display-name {
+        margin-top: 40px;
+        > input {
+          &:focus {
+            text-align: right;
+          }
+        }
+      }
+      > .password,
+      > .username,
+      > .cellphone, 
+      > .photo-url {
+        margin-top: 20px;
+        > input {
+          &:focus {
+            text-align: left;
           }
         }
       }
       > .button {
+        margin-top: 54px;
         text-align: center;
         > button {
+          background-color: #35469c;
+          color: #fff;
           cursor: pointer;
           font-size: 16px;
           font-weight: bold;
@@ -121,11 +117,9 @@
         }
       }
     }
+    > .login-status-gif {
+      margin-top: 35px;
+    }
   }
-  > .signup {
-    background-color: #35469c;
-  }
-  //   > .login {
-  //     background-color: transparent;
-  //   }
+  // > .signup {}
 }

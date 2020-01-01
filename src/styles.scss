@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import url(http://weloveiconfonts.com/api/?family=entypo|iconicfill|openwebicons|typicons|fontawesome);
+@import './assets/fonts/iranyekan/font-face/fontiran.css';
+
+* {
+  font-family: iranyekan, Verdana, sans-serif;
+}
 
 [class*='entypo-']:before {
   font-family: 'entypo', sans-serif;

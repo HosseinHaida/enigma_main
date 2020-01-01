@@ -1,13 +1,46 @@
+<div class="form-type-btn-group">
+  <div class="buttongroup">
+    <input
+      id="login"
+      type="radio"
+      value="login"
+      name="type"
+      (click)="formType = 'login'"
+      [checked]="formType === 'login'"
+    />
+    <label for="login">
+      ورود
+    </label>
+    <input
+      id="signup"
+      type="radio"
+      value="signup"
+      name="type"
+      (click)="formType = 'signup'"
+      [checked]="formType === 'signup'"
+    />
+    <label for="signup">
+      ثبت نام
+    </label>
+  </div>
+</div>
+
 <div class="forms-container">
-  <div class="login">
-    <h3>ورود</h3>
-    <form action="">
+  <div
+    class="login"
+    *ngIf="formType === 'login'"
+  >
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onLogin(loginForm)"
+    >
       <div class="username">
         <input
           type="text"
-          placeholder="نام کاربری"
+          placeholder="آدرس ایمیل"
           onfocus="this.placeholder = ''"
-          onblur="this.placeholder = 'نام کاربری'"
+          onblur="this.placeholder = 'آدرس ایمیل'"
+          formControlName="email"
         />
       </div>
       <div class="password">
@@ -16,28 +49,51 @@
           placeholder="کلمه عبور"
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = 'کلمه عبور'"
+          formControlName="password"
         />
       </div>
       <div class="button"><button type="submit">ورود</button></div>
     </form>
+    <img
+      *ngIf="loginStatusGifSource && formType === 'login'"
+      class="login-status-gif"
+      [src]="loginStatusGifSource"
+      alt=""
+    >
   </div>
-  <div class="signup">
-    <h3>ثبت نام</h3>
-    <form action="">
+  <div
+    class="signup"
+    *ngIf="formType === 'signup'"
+  >
+    <form
+      [formGroup]="signupForm"
+      (ngSubmit)="onSignup(signupForm)"
+    >
+      <div class="display-name">
+        <input
+          type="text"
+          placeholder="نام به فارسی"
+          onfocus="this.placeholder = ''"
+          onblur="this.placeholder = 'نام به فارسی'"
+          formControlName="displayName"
+        />
+      </div>
       <div class="cellphone">
         <input
           type="text"
           placeholder="تلفن همراه"
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = 'تلفن همراه'"
+          formControlName="phoneNumber"
         />
       </div>
       <div class="username">
         <input
           type="text"
-          placeholder="نام کاربری"
+          placeholder="آدرس ایمیل"
           onfocus="this.placeholder = ''"
-          onblur="this.placeholder = 'نام کاربری'"
+          onblur="this.placeholder = 'آدرس ایمیل'"
+          formControlName="email"
         />
       </div>
       <div class="password">
@@ -46,9 +102,25 @@
           placeholder="کلمه عبور"
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = 'کلمه عبور'"
+          formControlName="password"
+        />
+      </div>
+      <div class="photo-url">
+        <input
+          type="text"
+          placeholder="آدرس عکس پروفایل"
+          onfocus="this.placeholder = ''"
+          onblur="this.placeholder = 'آدرس عکس پروفایل'"
+          formControlName="photoURL"
         />
       </div>
       <div class="button"><button type="submit">ثبت نام</button></div>
     </form>
+    <img
+      *ngIf="loginStatusGifSource && formType === 'signup'"
+      class="login-status-gif"
+      [src]="loginStatusGifSource"
+      alt=""
+    >
   </div>
 </div>

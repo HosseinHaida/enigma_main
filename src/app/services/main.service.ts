@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 //  RXJS
 import { Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 //  Models
 import { Game } from '../models/game.model';
@@ -12,36 +12,27 @@ import { Challenge } from '../models/challenge.model';
 
 @Injectable()
 export class MainService {
-  connection = ' http://localhost:3000/';
-  challengesRootPath = 'http://localhost:4200/home/challenges/';
+  // connection = ' http://localhost:3000/';
+  connection = 'https://us-central1-enigma-ng.cloudfunctions.net/api';
+  // challengesRootPath = 'http://localhost:4200/home/challenges/';
+  challengesRootPath = 'https://us-central1-enigma-ng.cloudfunctions.net/api/challenges';
   challenges: Challenge[];
   missions: Mission[];
   games: Game[];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getInvitationCode() {
     return 'CrackerJoe7_888';
   }
 
-  getChallengesAPI(): Observable<Challenge[]> {
-    return this.http.get<Challenge[]>(this.connection + 'challenges').pipe(
-      map(challengesData => {
-        return challengesData.map(challenge => {
-          return {
-            id: challenge.id,
-            gameId: challenge.gameId,
-            gameName: '', //  later gets value
-            gamePhotoPath: '', // later gets value
-            slug: challenge.slug,
-            progress: challenge.progress,
-            isFilled: challenge.isFilled,
-            startTime: challenge.startTime,
-            players: challenge.players
-          };
-        });
-      })
-    );
+  getChallengesAPI(): Promise<Challenge[]> {
+    return <Promise<Challenge[]>>this.http.get(this.connection + '/challenges').toPromise().then((object: { challenges, proto }) => {
+      return object.challenges
+    },
+      error => {
+        console.log(error)
+      });
   }
   pushChallenges(challenges: Challenge[]) {
     this.challenges = challenges;
@@ -49,39 +40,26 @@ export class MainService {
   getChallenges() {
     return [...this.challenges];
   }
-  getChallenge(id: number): Challenge {
+  getChallenge(id: string): Challenge {
     return this.challenges.find(challenge => {
       return challenge.id === id;
     });
   }
-  getChallengeFullUrl(id: number) {
+  getChallengeFullUrl(id: string) {
     return this.challengesRootPath + id;
   }
-  getGamesAPI() {
-    return this.http.get<Game[]>(this.connection + 'games').pipe(
-      map(gamesData => {
-        return gamesData.map(game => {
-          return {
-            id: game.id,
-            userId: game.userId,
-            name: game.name,
-            level: game.level,
-            playersLimit: game.playersLimit,
-            city: game.city,
-            region: game.region,
-            cost: game.cost,
-            prize: game.prize,
-            missions: game.missions,
-            photoPath: game.photoPath
-          };
-        });
-      })
-    );
+  getGamesAPI(): Promise<Game[]> {
+    return <Promise<Game[]>>this.http.get(this.connection + '/games').toPromise().then((object: { games, proto }) => {
+      return object.games
+    },
+      error => {
+        console.log(error)
+      });
   }
   pushGames(games: Game[]) {
     this.games = games;
   }
-  getGame(id: number): Game {
+  getGame(id: string): Game {
     let gameToReturn;
     this.games.forEach(game => {
       if (game.id === id) {
@@ -93,31 +71,13 @@ export class MainService {
   getGames() {
     return [...this.games];
   }
-  getMissionsAPI() {
-    return this.http.get<Mission[]>(this.connection + 'missions').pipe(
-      map(missionsData => {
-        return missionsData.map(mission => {
-          return {
-            id: mission.id,
-            level: mission.level,
-            name: mission.name,
-            photoPath: mission.photoPath,
-            slug: mission.slug,
-            script: mission.script,
-            key: mission.key
-          };
-        });
-      })
-      // ,
-      // catchError(err => {
-      //   if (err.status === 404) {
-      //     console.log('404 file not found!!');
-      //     return;
-      //   } else {
-      //     return err;
-      //   }
-      // })
-    );
+  getMissionsAPI(): Promise<Mission[]> {
+    return <Promise<Mission[]>>this.http.get(this.connection + '/missions').toPromise().then((object: { missions, proto }) => {
+      return object.missions
+    },
+      error => {
+        console.log(error)
+      });
   }
   pushMissions(missions: Mission[]) {
     this.missions = missions;
