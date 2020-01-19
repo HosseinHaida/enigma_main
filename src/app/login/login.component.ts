@@ -43,8 +43,8 @@ export class LoginComponent implements OnInit {
         email: form.value.email,
         password: form.value.password,
         phoneNumber: form.value.phoneNumber,
-        photoURL: form.value.photoURL,
-        role: 'user'
+        photoURL: form.value.photoURL
+        // role: 'user'
       };
       this.userLogService.signNewUserUp(newUser);
     }

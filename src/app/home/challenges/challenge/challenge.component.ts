@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Challenge } from 'src/app/models/challenge.model';
 import { MainService } from 'src/app/services/main.service';
 import { Game } from 'src/app/models/game.model';
 import { ScreenLayoutService } from 'src/app/services/screen-layout.service';
+import { UserLogService } from 'src/app/services/user-log.service';
 
 @Component({
   selector: 'app-challenge',
@@ -15,9 +16,7 @@ export class ChallengeComponent implements OnInit {
   game: Game;
   deviceWidth: number;
   someNumber = 50;
-
-  // Static username assignment
-  playerUsername = 'ahmd';
+  userUid: string;
   challengePath: string;
   isPlayerIn: boolean;
   playersNeeded: number;
@@ -25,8 +24,10 @@ export class ChallengeComponent implements OnInit {
   bigScreensCorrespondingHeader: string;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private mainService: MainService,
+    private userLogServce: UserLogService,
     private screenLayoutService: ScreenLayoutService
   ) { }
 
@@ -36,6 +37,8 @@ export class ChallengeComponent implements OnInit {
     this.screenLayoutService.deviceWidth.subscribe(width => {
       this.deviceWidth = width;
     });
+    // See who this user is
+    this.userUid = this.userLogServce.getUserUid();
     // Set challenge from the URL
     this.route.params.subscribe((params: Params) => {
       const challengeId = params['id'];
@@ -44,24 +47,19 @@ export class ChallengeComponent implements OnInit {
 
       if (!this.challenge.isFilled) {
         //  Number of players needed to start gets shown
-        this.playersNeeded =
-          this.game.playersLimit - this.challenge.players.length;
-        // .toString();
-        // Concat a 0 to numbers lower than 10
-        // if (
-        //   Number(this.playersNeeded) / 10 > 0 &&
-        //   Number(this.playersNeeded) / 10 < 1
-        // ) {
-        //   this.playersNeeded.toString();
-        //   this.playersNeeded = '0' + this.playersNeeded;
-        // }
+        if (this.challenge.players) {
+          this.playersNeeded =
+            this.game.playersLimit - Object.keys(this.challenge.players).length;
+        }
       }
       //  Know if the user has subscribed to the challenge
-      for (const player of this.challenge.players) {
-        this.isPlayerIn =
-          this.playerUsername === player.username ? true : false;
-        if (this.isPlayerIn) {
-          break;
+      if (this.challenge.players) {
+        for (const player of this.challenge.players) {
+          this.isPlayerIn =
+            this.userUid === player.uid ? true : false;
+          if (this.isPlayerIn) {
+            break;
+          }
         }
       }
       // Assigning value to corresponding headers
@@ -92,7 +90,9 @@ export class ChallengeComponent implements OnInit {
     return n.toString().replace(/\d/g, x => farsiDigits[x]);
   }
   toNumber(object: Object) {
-    return Object.keys(object).length;
+    if (object) {
+      return Object.keys(object).length;
+    } else return 0
   }
 
   challengeHasAlreadyStarted(startTime: string) {
@@ -118,5 +118,15 @@ export class ChallengeComponent implements OnInit {
     }
     document.getElementById(tabContentId).style.display = 'block';
     evt.target.className += ' active';
+  }
+
+  signForTheChallenge() {
+    if (!this.isPlayerIn) {
+      this.userLogServce.signForTheChallenge(this.challenge.id, this.challenge.gameId);
+    }
+  }
+
+  cancel() {
+    this.router.navigate(['/home/challenges'])
   }
 }

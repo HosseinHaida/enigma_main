@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Challenge } from 'src/app/models/challenge.model';
 import { MainService } from 'src/app/services/main.service';
+import { Game } from 'src/app/models/game.model';
 
 @Component({
   selector: 'app-extras',
@@ -9,6 +10,7 @@ import { MainService } from 'src/app/services/main.service';
 })
 export class ExtrasComponent implements OnInit {
   @Input() challenge: Challenge;
+  @Input() game: Game;
   @Input() isPlayerIn: boolean;
   @Input() playersNeeded: number;
   @Input() correspondingHeader: string;
@@ -19,7 +21,7 @@ export class ExtrasComponent implements OnInit {
 
   challengePath: string;
 
-  constructor(private mainService: MainService) {}
+  constructor(private mainService: MainService) { }
 
   ngOnInit() {
     this.challengePath = this.mainService.getChallengeFullUrl(

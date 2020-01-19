@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Challenge } from 'src/app/models/challenge.model';
 import { MainService } from 'src/app/services/main.service';
 import { ScreenLayoutService } from 'src/app/services/screen-layout.service';
+import { I18nPluralPipe } from '@angular/common';
+import { Game } from 'src/app/models/game.model';
 
 @Component({
   selector: 'app-main',
@@ -10,6 +12,7 @@ import { ScreenLayoutService } from 'src/app/services/screen-layout.service';
 })
 export class MainComponent implements OnInit {
   @Input() challenge: Challenge;
+  @Input() game: Game;
   @Input() isPlayerIn: boolean;
   @Input() playersNeeded: number;
   @Input() countdownsPermitted: boolean;
@@ -25,7 +28,7 @@ export class MainComponent implements OnInit {
   constructor(
     private mainService: MainService,
     private screenLayoutService: ScreenLayoutService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.deviceWidth = window.innerWidth;

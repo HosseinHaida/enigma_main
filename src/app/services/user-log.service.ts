@@ -136,4 +136,21 @@ export class UserLogService {
         localStorage.removeItem('photoURL');
         localStorage.removeItem('uid');
     }
+
+    signForTheChallenge(challengeId: string, gameId: string) {
+        // this.signupStatus.next('trying');
+        return this.http.post(this.connection + '/challenges/sign', { cid: challengeId, gid: gameId }).subscribe(res => {
+            // this.signupStatus.next('successful');
+            // this.router.navigate(['/home/challenges']);
+            window.location.reload();
+        },
+            error => {
+                console.log(error)
+                // this.signupStatus.next('failure')
+            });
+    }
+
+    getUsers(array: Array<string>) {
+        return this.http.get(this.connection + '/users?array=' + array)
+    }
 }

@@ -1,11 +1,11 @@
 <div *ngIf="leftColumn">
   <div class="main-title">
-    <span>۴۵</span>
+    <span>{{toFarsiNumber(game.cost)}}</span>
     <header>: ورودی این بازی</header>
     <i class="entypo-tag"></i>
   </div>
   <div class="main-title">
-    <span>۱۲۵</span>
+    <span>{{toFarsiNumber(game.prize)}}</span>
     <header>: جایزه این بازی</header>
     <i class="fontawesome-money"></i>
   </div>
@@ -17,7 +17,7 @@
     <i class="entypo-key"></i>
   </div>
   <div class="main-title">
-    <span>۶</span>
+    <span>{{toFarsiNumber(game.level)}}</span>
     <header>: درجه سختی</header>
     <i class="entypo-progress-2"></i>
   </div>
@@ -25,7 +25,7 @@
 
 <div *ngIf="rightColumn">
   <div class="main-title">
-    <span>۶</span>
+    <span>{{toFarsiNumber(game.playersLimit)}}</span>
     <header>: بازیکن مورد نیاز</header>
     <i class="entypo-help"></i>
   </div>
@@ -37,12 +37,12 @@
 </div>
 <div *ngIf="extraContentRight">
   <div class="main-title">
-    <span>اصفهان - توحید</span>
+    <span>{{game.city}} - {{game.region}}</span>
     <header>: موقعیت</header>
     <i class="entypo-address"></i>
   </div>
   <div class="main-title">
-    <span>۶</span>
+    <span>{{ toFarsiNumber(game.missions.length) }}</span>
     <header>: تعداد مراحل</header>
     <i class="entypo-flow-tree"></i>
   </div>
@@ -54,6 +54,8 @@
     class="main-title players-left"
   >
     <header>.جای خالی باقی مانده است</header>
-    <span>۵</span>
+    <span
+      *ngIf="challenge.players; else elseBlock">{{toFarsiNumber(game.playersLimit - challenge.players.length)}}</span>
+    <ng-template #elseBlock> ۰ </ng-template>
   </div>
 </div>

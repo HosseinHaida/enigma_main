@@ -11,6 +11,7 @@ button {
   border: none;
   width: 50%;
   outline: none;
+  text-align: center;
 }
 
 button.sign {
@@ -30,6 +31,7 @@ button.cancel {
 .buttons {
   border: 2px solid rgb(100, 100, 100);
 }
+
 @media only screen and (min-width: 600px) {
   .sidebar-placeholder {
     width: 47px;
@@ -53,6 +55,10 @@ button.cancel {
   .right-column {
     @include flex(2);
   }
+}
+
+.tabs  {
+  color: black;
 }
 
 @media only screen and (max-width: 600px) {
@@ -83,7 +89,7 @@ button.cancel {
       border-top: 2px solid rgb(100, 100, 100);
       border-right: 2px solid rgb(100, 100, 100);
       border-left: 2px solid rgb(100, 100, 100);
-      font-weight: 900;
+      font-weight: 700;
     }
     > button.tab-links.active + span.underline {
       display: inline-block;
@@ -108,6 +114,7 @@ button.cancel {
     height: 68vh;
     min-height: 350px;
     border: 2px solid rgb(100, 100, 100);
+    border-top: none;
   }
 
   #share > header {

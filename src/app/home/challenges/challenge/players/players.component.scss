@@ -9,6 +9,11 @@
     @include header-style();
     margin-bottom: 10px;
   }
+  > .status-gif {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+  }
   .player-container {
     width: 100%;
     background-color: whitesmoke;
@@ -28,6 +33,9 @@
         border-radius: 50%;
         -moz-border-radius: 50%;
         -webkit-border-radius: 50%;
+        &.gray {
+          background: rgb(192, 192, 192);
+        }
       }
     }
     > .player-right-column {
@@ -38,6 +46,10 @@
         font-size: 11px;
         font-family: Courier, monospace;
         margin-bottom: 5px;
+        &.gray {
+          background-color: rgb(192, 192, 192);
+          color: rgb(192, 192, 192);
+        }
       }
       > .user-level {
         width: 5%;
@@ -52,6 +64,9 @@
         -webkit-animation: filler 0.6s ease-in-out;
         -moz-animation: filler 0.6s ease-in-out;
         animation: filler 0.6s ease-in-out;
+        &.gray {
+          background: rgb(192, 192, 192);
+        }
       }
     }
   }

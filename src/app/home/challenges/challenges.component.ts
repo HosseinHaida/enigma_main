@@ -24,11 +24,6 @@ export class ChallengesComponent implements OnInit {
     this.challenges = this.mainService.getChallenges();
     this.games = this.mainService.getGames();
 
-    // console.log(this.challenges[0].id)
-    // console.log(this.challenges[0].slug)
-    // console.log(this.challenges[0].players ? Object.keys(this.challenges[0].players).length : 0)
-    // console.log(this.games[0].cost)
-
     this.equivalentGames = new Array<Object>();
     this.challenges.forEach(challenge => {
       for (const game of this.games) {

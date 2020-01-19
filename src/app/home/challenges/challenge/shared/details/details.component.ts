@@ -17,15 +17,18 @@ export class DetailsComponent implements OnInit {
   @Input() challenge: Challenge;
   @Input() game: Game;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   toFarsiNumber(n) {
     const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
     return n.toString().replace(/\d/g, x => farsiDigits[x]);
   }
+
   toNumber(object: Object) {
-    return Object.keys(object).length;
+    if (object) {
+      return Object.keys(object).length;
+    } else return 0
   }
 }

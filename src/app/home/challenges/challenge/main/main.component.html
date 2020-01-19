@@ -18,7 +18,10 @@
       اشتراک گذاری
     </button>
   </header>
-  <div *ngIf="toggleContentState" class="main-content share">
+  <div
+    *ngIf="toggleContentState"
+    class="main-content share"
+  >
     <div class="main-left-column">
       <app-share
         *ngIf="sharingSectionPermitted"
@@ -60,8 +63,14 @@
     </div>
   </div>
   <!-- In case of showing the countdowns -->
-  <div *ngIf="countdownsPermitted" class="main-content countdown-container">
-    <div *ngIf="!challenge.isFilled && isPlayerIn" class="players-countdown">
+  <div
+    *ngIf="countdownsPermitted"
+    class="main-content countdown-container"
+  >
+    <div
+      *ngIf="!challenge.isFilled && isPlayerIn"
+      class="players-countdown"
+    >
       <div class="number">
         <span class="player-text">بازیکن</span>
         <span class="player-number">{{ toFarsiNumber(playersNeeded) }}</span>
