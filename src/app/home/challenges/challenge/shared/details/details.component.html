@@ -54,8 +54,6 @@
     class="main-title players-left"
   >
     <header>.جای خالی باقی مانده است</header>
-    <span
-      *ngIf="challenge.players; else elseBlock">{{toFarsiNumber(game.playersLimit - challenge.players.length)}}</span>
-    <ng-template #elseBlock> ۰ </ng-template>
+    <span>{{numberOfNeededPlayers}}</span>
   </div>
 </div>

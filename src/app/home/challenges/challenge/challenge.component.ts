@@ -18,7 +18,7 @@ export class ChallengeComponent implements OnInit {
   someNumber = 50;
   userUid: string;
   challengePath: string;
-  isPlayerIn: boolean;
+  isPlayerIn = 0;
   playersNeeded: number;
   smallScreensCorrespondingHeader: string;
   bigScreensCorrespondingHeader: string;
@@ -56,10 +56,8 @@ export class ChallengeComponent implements OnInit {
       if (this.challenge.players) {
         const thisthis = this;
         Object.keys(this.challenge.players).map(function (playerNamedIndex) {
-          thisthis.isPlayerIn =
-            thisthis.userUid === thisthis.challenge.players[playerNamedIndex].uid ? true : false;
-          if (thisthis.isPlayerIn) {
-            return
+          if (thisthis.userUid === thisthis.challenge.players[playerNamedIndex].uid) {
+            thisthis.isPlayerIn++
           }
         })
       }

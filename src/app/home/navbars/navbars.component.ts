@@ -11,14 +11,14 @@ export class NavbarsComponent implements OnInit {
   sidebar: HTMLElement;
   overlay: HTMLElement;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.sidebar = document.getElementById('aside');
     this.overlay = document.getElementById('overlay');
 
     let prevScrollpos = window.pageYOffset;
-    window.onscroll = function() {
+    window.onscroll = function () {
       if (window.innerWidth < 661) {
         const currentScrollPos = window.pageYOffset;
         if (prevScrollpos > currentScrollPos) {
@@ -44,5 +44,9 @@ export class NavbarsComponent implements OnInit {
 
   onChallengesShow() {
     this.router.navigate(['challenges'], { relativeTo: this.route });
+  }
+
+  onUserProfileShow() {
+    this.router.navigate(['home/profile'])
   }
 }

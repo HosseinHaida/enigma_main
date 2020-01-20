@@ -16,10 +16,17 @@ export class DetailsComponent implements OnInit {
   @Input() isPlayerIn: boolean;
   @Input() challenge: Challenge;
   @Input() game: Game;
+  numberOfNeededPlayers: Number;
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    if (this.challenge.players) {
+      this.numberOfNeededPlayers = this.toFarsiNumber(this.game.playersLimit - Object.keys(this.challenge.players).length)
+    } else {
+      this.numberOfNeededPlayers = this.toFarsiNumber(this.game.playersLimit)
+    }
+  }
 
   toFarsiNumber(n) {
     const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
