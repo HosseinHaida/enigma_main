@@ -52,15 +52,16 @@ export class ChallengeComponent implements OnInit {
             this.game.playersLimit - Object.keys(this.challenge.players).length;
         }
       }
-      //  Know if the user has subscribed to the challenge
+      //  Know if the user has signed for the challenge or not
       if (this.challenge.players) {
-        for (const player of this.challenge.players) {
-          this.isPlayerIn =
-            this.userUid === player.uid ? true : false;
-          if (this.isPlayerIn) {
-            break;
+        const thisthis = this;
+        Object.keys(this.challenge.players).map(function (playerNamedIndex) {
+          thisthis.isPlayerIn =
+            thisthis.userUid === thisthis.challenge.players[playerNamedIndex].uid ? true : false;
+          if (thisthis.isPlayerIn) {
+            return
           }
-        }
+        })
       }
       // Assigning value to corresponding headers
       if (!this.challenge.isFilled && !this.isPlayerIn) {
