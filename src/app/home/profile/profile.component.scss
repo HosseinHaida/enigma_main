@@ -1,0 +1,142 @@
+@import '../challenges/challenge/challenge.component.scss';
+
+.left-column {
+    border: 2px solid rgb(100, 100, 100);
+    margin: 15px 0 15px 9px;
+    // height: 471px;
+    height: max-content;
+    padding-bottom: 7px;
+    text-align: left;
+    > header {
+        @include header-style();
+        margin-bottom: 10px;
+      }
+    > .avatar-images {
+        padding: 0 5px 0 7px;
+        > .avatar-image {
+            display: inline-block;
+            > div {
+                display: inline-block;
+                margin: 1px 3px;
+                width: 48px;
+                height: 48px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                cursor: pointer;
+                // border-radius: 50%;
+                // -moz-border-radius: 50%;
+                // -webkit-border-radius: 50%;
+                &.active::after{
+                  content: "";
+                  display: block;
+                  width: 10px;
+                  height: 10px;
+                  background-color: #35469c;
+                  clip-path: polygon(0 0, 0% 100%, 100% 0);
+                  -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
+                }
+            }
+        }
+    }
+}
+
+// .avatar-images {
+//     display: inline-block;
+//     width: 60px;
+// }
+
+.right-column > .main {
+    border: 2px solid rgb(100, 100, 100);
+    height: 413px;
+    margin: 15px 0 9px 9px;
+    > header {
+      @include header-style();
+      margin-bottom: 10px;
+      > .header-button {
+        float: left;
+        background-color: rgb(100, 100, 100);
+        color: white;
+        border: none;
+        padding: 5px 10px 8px 10px;
+        margin-top: -3px;
+        cursor: pointer;
+        outline: none;
+        &.share {
+          margin-left: 2px;
+        }
+        &.active {
+          background-color: white;
+          color: initial;
+        }
+      }
+    }
+}
+
+// @media only screen and (min-width: 600px) {
+//   .left-column {
+//     @include flex(0.75);
+//   }
+//   .right-column {
+//     @include flex(1.7);
+//   }
+// }
+
+form {
+  margin-top: 20px
+}
+
+.form-control-container {
+  // margin-top: 7px;
+  // margin: 0 20px 0 20px;
+  text-align: center;
+}
+
+label {
+  padding: 1px 10px 6px 10px;
+  width: 70px;
+  text-align: right;
+  float: right;
+  margin-right: 30px;
+  background-color: rgb(250, 250, 250);
+  color: rgb(109, 109, 109);
+  line-height: 1.5em;
+  font-size: 14px;
+}
+
+input[type='text'],
+input[type='number'],
+textarea {
+  border: none;
+  border-top: 1px solid rgb(221, 221, 221);
+}
+
+input {
+  min-height: 28px;
+  width: calc(100% - 70px);
+  outline: none;
+  display: block;
+  margin: auto;
+  background-color: whitesmoke;
+  color: rgb(19, 19, 19);
+  padding: 4px 5px;
+}
+
+.line {
+  height: 2px;
+  width: 0px;
+  position: relative;
+  display: inline-block;
+  transition: 0.3s width ease-in-out;
+  position: relative;
+  top: -14px;
+}
+
+input[type='text']:focus + .line,
+input[type='number']:focus + .line,
+select:focus + .line,
+textarea:focus + .line {
+  width: 100%;
+  background-color: #73879c;
+}
+

@@ -84,11 +84,6 @@ input[name='type']:checked+label{
       }
       > .display-name {
         margin-top: 40px;
-        > input {
-          &:focus {
-            text-align: right;
-          }
-        }
       }
       > .password,
       > .username,

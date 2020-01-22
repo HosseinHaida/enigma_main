@@ -43,7 +43,11 @@ import { UserLogService } from './services/user-log.service';
 import { MainService } from './services/main.service';
 import { ScreenLayoutService } from './services/screen-layout.service';
 import { AuthGuard } from './services/auth-guard.service';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProfileComponent } from './home/profile/profile.component'
+
+// ng-circle-progress
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 
 @NgModule({
@@ -60,7 +64,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CountdownComponent,
     DetailsComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +79,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
       environment.firebaseConfig,
       'enigma-ng-app'
     ),
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      // outerStrokeColor: "#78C000",
+      // innerStrokeColor: "#C7E596",
+      animationDuration: 300
+    }),
     AngularFireAuthModule
   ],
 

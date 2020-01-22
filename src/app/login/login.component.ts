@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   signupForm: FormGroup;
   loginStatusGifSource: string = null;
+  signupStatusGifSource: string = null;
   formType = 'login';
 
   constructor(private userLogService: UserLogService, private router: Router) { }
@@ -33,6 +34,9 @@ export class LoginComponent implements OnInit {
     });
     this.userLogService.loginStatus.subscribe(status => {
       this.loginStatusGifSource = 'assets/' + status + '.gif'
+    });
+    this.userLogService.signupStatus.subscribe(status => {
+      this.signupStatusGifSource = 'assets/' + status + '.gif'
     });
   }
 
