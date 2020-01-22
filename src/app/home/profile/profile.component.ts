@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ScreenLayoutService } from 'src/app/services/screen-layout.service';
 import { UserLogService } from 'src/app/services/user-log.service';
 
@@ -22,6 +23,7 @@ export class ProfileComponent implements OnInit {
     'https://cdn3.iconfinder.com/data/icons/flat-avatars-3/512/Flat_avatars_svg-10-512.png'
   ];
   player: any;
+  profileForm: FormGroup;
 
 
   constructor(
@@ -40,6 +42,17 @@ export class ProfileComponent implements OnInit {
       this.player = res.usersToBeSent[0];
       // document.documentElement.style.setProperty(`--${'configs'}`, value + suffix);
       console.log(this.player)
+    });
+    this.gameForm = new FormGroup({
+      name: new FormControl(name, Validators.required),
+      level: new FormControl(level, Validators.required),
+      playersNo: new FormControl(playersLimit, Validators.required),
+      missions: missions,
+      city: new FormControl(city, Validators.required),
+      region: new FormControl(region, Validators.required),
+      cost: new FormControl(cost, Validators.required),
+      prize: new FormControl(prize, Validators.required),
+      photoPath: new FormControl(photoPath, Validators.required)
     });
   }
 
