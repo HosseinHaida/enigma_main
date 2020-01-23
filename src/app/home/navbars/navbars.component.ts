@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UserLogService } from 'src/app/services/user-log.service';
 
 @Component({
   selector: 'app-navbars',
@@ -11,7 +12,7 @@ export class NavbarsComponent implements OnInit {
   sidebar: HTMLElement;
   overlay: HTMLElement;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private userLogService: UserLogService) { }
 
   ngOnInit() {
     this.sidebar = document.getElementById('aside');
@@ -48,5 +49,9 @@ export class NavbarsComponent implements OnInit {
 
   onUserProfileShow() {
     this.router.navigate(['home/profile'])
+  }
+
+  onLogout() {
+    this.userLogService.logout(true)
   }
 }

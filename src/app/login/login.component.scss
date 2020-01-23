@@ -73,7 +73,7 @@ input[name='type']:checked+label{
           height: 28px;
           padding: 6px 7px;
           font-weight: bold;
-          border-radius: 3px;
+          // border-radius: 3px;
           &::placeholder,
           &::-webkit-input-placeholder,
           &::-webkit-input-placeholder {
@@ -108,7 +108,7 @@ input[name='type']:checked+label{
           width: calc(75% + 18px);
           padding: 10px 8px 14px 8px;
           border: none;
-          border-radius: 3px;
+          // border-radius: 3px;
         }
       }
     }

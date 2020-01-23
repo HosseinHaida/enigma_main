@@ -81,12 +81,10 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     ),
     NgCircleProgressModule.forRoot({
       // set defaults here
-      radius: 100,
-      outerStrokeWidth: 16,
-      innerStrokeWidth: 8,
-      // outerStrokeColor: "#78C000",
-      // innerStrokeColor: "#C7E596",
-      animationDuration: 300
+      animation: true,
+      animationDuration: 300,
+      outerStrokeWidth: 6,
+      innerStrokeWidth: 4
     }),
     AngularFireAuthModule
   ],

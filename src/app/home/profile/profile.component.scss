@@ -3,7 +3,6 @@
 .left-column {
     border: 2px solid rgb(100, 100, 100);
     margin: 15px 0 15px 9px;
-    // height: 471px;
     height: max-content;
     padding-bottom: 7px;
     text-align: left;
@@ -24,9 +23,6 @@
                 background-repeat: no-repeat;
                 background-size: cover;
                 cursor: pointer;
-                // border-radius: 50%;
-                // -moz-border-radius: 50%;
-                // -webkit-border-radius: 50%;
                 &.active::after{
                   content: "";
                   display: block;
@@ -40,11 +36,6 @@
         }
     }
 }
-
-// .avatar-images {
-//     display: inline-block;
-//     width: 60px;
-// }
 
 .right-column > .main {
     border: 2px solid rgb(100, 100, 100);
@@ -73,22 +64,11 @@
     }
 }
 
-// @media only screen and (min-width: 600px) {
-//   .left-column {
-//     @include flex(0.75);
-//   }
-//   .right-column {
-//     @include flex(1.7);
-//   }
-// }
-
 form {
   margin-top: 20px
 }
 
 .form-control-container {
-  // margin-top: 7px;
-  // margin: 0 20px 0 20px;
   text-align: center;
 }
 
@@ -136,7 +116,6 @@ input[type='text']:focus + .line,
 input[type='number']:focus + .line,
 select:focus + .line,
 textarea:focus + .line {
-  width: 100%;
+  width: calc(100% - 60px);
   background-color: #73879c;
 }
-

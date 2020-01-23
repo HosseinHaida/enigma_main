@@ -12,31 +12,43 @@
                 <div
                     [ngClass]="{'active': player && avatar === player.photoURL}"
                     [style.backgroundImage]="'url(' + avatar + ')'"
+                    (click)="player.photoURL = avatar"
                 ></div>
             </div>
         </div>
     </div>
     <!-- Right Column -->
-    <div class="right-column">
+    <div
+        class="right-column"
+        *ngIf="player"
+    >
         <div class="main">
             <header>پروفایل</header>
             <div>
                 <div
                     style="width: 90px; height: 90px; background-position: center center;
                     background-repeat: no-repeat;
-                    background-size: cover; margin-left: 15px; float: left;"
+                    background-size: cover; margin-left: 15px; float: left; margin-top: 13px"
                     [style.backgroundImage]="'url(' + player.photoURL + ')'"
                 ></div>
                 <!-- LEVEL ////////////////////////////// -->
                 <circle-progress
-                    [percent]="85"
-                    [radius]="100"
-                    [outerStrokeWidth]="16"
-                    [innerStrokeWidth]="8"
+                    [percent]="player.credit"
+                    [maxPercent]="10000"
+                    [units]="''"
+                    [radius]="47"
+                    [subtitle]="'XP'"
                     [outerStrokeColor]="'#78C000'"
                     [innerStrokeColor]="'#C7E596'"
-                    [animation]="true"
-                    [animationDuration]="300"
+                ></circle-progress>
+                <circle-progress
+                    style="margin-right: 15px"
+                    [percent]="player.level"
+                    [units]="''"
+                    [radius]="47"
+                    [subtitle]="'سطح'"
+                    [outerStrokeColor]="'#35469c'"
+                    [innerStrokeColor]="'rgb(100, 100, 100)'"
                 ></circle-progress>
                 <!--  -->
                 <form
@@ -49,7 +61,7 @@
                         <div>
                             <input
                                 type="text"
-                                formControlName="name"
+                                formControlName="username"
                             />
                             <div class="line"></div>
                         </div>
@@ -59,7 +71,7 @@
                         <div>
                             <input
                                 type="text"
-                                formControlName="name"
+                                formControlName="email"
                             />
                             <div class="line"></div>
                         </div>
@@ -70,14 +82,9 @@
         <!-- Buttons section -->
         <section class="buttons">
             <button
-                *ngIf="!isPlayerIn && !isFilled"
-                (click)="signForTheChallenge()"
+                (click)="onSubmit()"
                 class="sign"
             >ذخیره</button><button
-                *ngIf="isPlayerIn && challengeHasAlreadyStarted(challenge.startTime)"
-                class="sign"
-            >
-                شروع بازی</button><button
                 (click)="cancel()"
                 class="cancel"
             >برگشتن</button>

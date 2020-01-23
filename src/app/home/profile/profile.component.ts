@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   ];
   player: any;
   profileForm: FormGroup;
+  selectedAvatar: string;
 
 
   constructor(
@@ -40,20 +41,30 @@ export class ProfileComponent implements OnInit {
     // Get Player
     this.userLogService.getUsers([this.userLogService.getUserUid()]).subscribe((res: { usersToBeSent: {} }) => {
       this.player = res.usersToBeSent[0];
-      // document.documentElement.style.setProperty(`--${'configs'}`, value + suffix);
+      this.profileForm = new FormGroup({
+        username: new FormControl(this.player.username, Validators.required),
+        email: new FormControl(this.player.email, Validators.required),
+        // playersNo: new FormControl(playersLimit, Validators.required),
+        // missions: missions,
+        // city: new FormControl(city, Validators.required),
+        // region: new FormControl(region, Validators.required),
+        // cost: new FormControl(cost, Validators.required),
+        // prize: new FormControl(prize, Validators.required),
+        // photoPath: new FormControl(photoPath, Validators.required)
+      });
       console.log(this.player)
     });
-    this.gameForm = new FormGroup({
-      name: new FormControl(name, Validators.required),
-      level: new FormControl(level, Validators.required),
-      playersNo: new FormControl(playersLimit, Validators.required),
-      missions: missions,
-      city: new FormControl(city, Validators.required),
-      region: new FormControl(region, Validators.required),
-      cost: new FormControl(cost, Validators.required),
-      prize: new FormControl(prize, Validators.required),
-      photoPath: new FormControl(photoPath, Validators.required)
-    });
+  }
+
+  onSubmit() {
+
+    const newProfileConfig = {
+      photoURL: this.player.photoURL,
+      displayName: this.profileForm.value['username'],
+      email: this.profileForm.value['email']
+    };
+
+    this.userLogService.updateUser(newProfileConfig)
   }
 
 }

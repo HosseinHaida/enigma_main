@@ -153,4 +153,18 @@ export class UserLogService {
     getUsers(array: Array<string>) {
         return this.http.get(this.connection + '/users?array=' + array)
     }
+
+    updateUser(newProfileConfig: { photoURL: string, displayName: string, email: string }) {
+        this.http.patch(this.connection + '/users/',
+            newProfileConfig).subscribe(() => {
+                // this.getGamesAPI().then(games => {
+                //     this.games = games;
+                //     this.gamesUpdated.next([...this.games]);
+                // });
+            },
+                error => {
+                    console.log('Unable to update user!')
+                    console.log(error)
+                })
+    }
 }

@@ -77,6 +77,8 @@ export class ChallengeComponent implements OnInit {
       ) {
         this.smallScreensCorrespondingHeader = 'نیازمندی';
         this.bigScreensCorrespondingHeader = 'تعداد بازیکن مورد نیاز ';
+      } else if (this.challenge.isFilled && !this.challenge.startTime) {
+        this.bigScreensCorrespondingHeader = 'در انتظار برای اعلام زمان شروع'
       }
     });
     this.challengePath = this.mainService.getChallengeFullUrl(

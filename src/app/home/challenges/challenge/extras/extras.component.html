@@ -23,9 +23,18 @@
     </div>
   </div>
 
+  <div
+    style="text-align: center"
+    *ngIf="challenge.isFilled && !challenge.startTime"
+  ><img
+      src="assets/earth.gif"
+      alt=""
+      style="max-height: 133px"
+    ></div>
+
   <!-- In case of showing the clock countdown -->
   <app-countdown
-    *ngIf="challenge.isFilled && isPlayerIn && countdownsPermitted"
+    *ngIf="challenge.isFilled && countdownsPermitted"
     [startTime]="challenge.startTime"
     [showHelperText]="false"
   ></app-countdown>
