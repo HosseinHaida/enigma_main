@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ScreenLayoutService } from 'src/app/services/screen-layout.service';
 import { UserLogService } from 'src/app/services/user-log.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -29,7 +30,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private screenLayoutService: ScreenLayoutService,
-    private userLogService: UserLogService
+    private userLogService: UserLogService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -43,21 +45,13 @@ export class ProfileComponent implements OnInit {
       this.player = res.usersToBeSent[0];
       this.profileForm = new FormGroup({
         username: new FormControl(this.player.username, Validators.required),
-        email: new FormControl(this.player.email, Validators.required),
-        // playersNo: new FormControl(playersLimit, Validators.required),
-        // missions: missions,
-        // city: new FormControl(city, Validators.required),
-        // region: new FormControl(region, Validators.required),
-        // cost: new FormControl(cost, Validators.required),
-        // prize: new FormControl(prize, Validators.required),
-        // photoPath: new FormControl(photoPath, Validators.required)
+        email: new FormControl(this.player.email, Validators.required)
       });
-      console.log(this.player)
+      // console.log(this.player)
     });
   }
 
   onSubmit() {
-
     const newProfileConfig = {
       photoURL: this.player.photoURL,
       displayName: this.profileForm.value['username'],
@@ -65,6 +59,10 @@ export class ProfileComponent implements OnInit {
     };
 
     this.userLogService.updateUser(newProfileConfig)
+  }
+
+  onCancel() {
+    this.router.navigate(['/home/challenges'])
   }
 
 }

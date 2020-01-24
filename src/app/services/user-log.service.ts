@@ -157,6 +157,7 @@ export class UserLogService {
     updateUser(newProfileConfig: { photoURL: string, displayName: string, email: string }) {
         this.http.patch(this.connection + '/users/',
             newProfileConfig).subscribe(() => {
+                window.location.reload()
                 // this.getGamesAPI().then(games => {
                 //     this.games = games;
                 //     this.gamesUpdated.next([...this.games]);

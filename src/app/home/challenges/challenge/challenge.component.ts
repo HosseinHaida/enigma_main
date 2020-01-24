@@ -64,16 +64,16 @@ export class ChallengeComponent implements OnInit {
       // Assigning value to corresponding headers
       if (!this.challenge.isFilled && !this.isPlayerIn) {
         this.smallScreensCorrespondingHeader = 'اطلاعات';
-        if (this.challenge.startTime === '') {
+        if (!this.challenge.startTime) {
           this.bigScreensCorrespondingHeader = 'سایر اطلاعات';
         }
-      } else if (this.challenge.startTime !== '') {
+      } else if (this.challenge.startTime) {
         this.smallScreensCorrespondingHeader = 'شمارش';
         this.bigScreensCorrespondingHeader = 'شمارش معکوس';
       } else if (
         !this.challenge.isFilled &&
         this.isPlayerIn &&
-        this.challenge.startTime === ''
+        !this.challenge.startTime
       ) {
         this.smallScreensCorrespondingHeader = 'نیازمندی';
         this.bigScreensCorrespondingHeader = 'تعداد بازیکن مورد نیاز ';

@@ -33,7 +33,7 @@
     <!-- Buttons section -->
     <section class="buttons">
       <button
-        *ngIf="!isPlayerIn && !isFilled"
+        *ngIf="!isPlayerIn && !challenge.isFilled"
         (click)="signForTheChallenge()"
         class="sign"
       >ورود</button><button
@@ -154,7 +154,7 @@
     <section class="buttons">
       <button
         (click)="signForTheChallenge()"
-        *ngIf="!isPlayerIn && !isFilled"
+        *ngIf="!isPlayerIn && !challenge.isFilled"
         class="sign"
       >ورود</button><button
         *ngIf="isPlayerIn && challengeHasAlreadyStarted(startTime)"

@@ -16,9 +16,9 @@ export class CountdownComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() showHelperText: boolean;
   timeinterval: any;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit() {
     this.getCountdownElementsAndInitialize();
@@ -33,7 +33,7 @@ export class CountdownComponent implements OnInit, AfterViewInit, OnDestroy {
       if (this.timeinterval) {
         clearInterval(this.timeinterval);
       }
-      const deadline = new Date(Date.parse(this.startTime));
+      const deadline = new Date(Number(this.startTime));
       const countdown = document.getElementById('countdown');
       this.initializecountdown(countdown, deadline);
     } else {
@@ -75,7 +75,7 @@ export class CountdownComponent implements OnInit, AfterViewInit, OnDestroy {
         hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
         minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
         secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-        console.log('innerHTML changed!!');
+        // console.log('innerHTML changed!!');
       }
     };
 
