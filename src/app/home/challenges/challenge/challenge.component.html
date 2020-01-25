@@ -39,9 +39,9 @@
       >ورود</button><button
         *ngIf="challenge.startTime && isPlayerIn && challengeHasAlreadyStarted(challenge.startTime)"
         class="sign"
-        (click)="onTakeMissions()"
+        (click)="onGoToMissions()"
       >
-        شروع بازی</button><button
+        مأموریت‌ها</button><button
         (click)="cancel()"
         class="cancel"
       >برگشتن</button>
@@ -160,8 +160,9 @@
       >ورود</button><button
         *ngIf="isPlayerIn && challengeHasAlreadyStarted(startTime)"
         class="sign"
+        (
       >
-        شروع بازی
+        ( ماموریت(ها
       </button>
       <button
         (click)="cancel()"

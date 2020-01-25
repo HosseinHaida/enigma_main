@@ -105,7 +105,7 @@ export class ChallengeComponent implements OnInit {
 
   }
 
-  onTakeMissions() {
+  onGoToMissions() {
     this.router.navigate(['missions'], { relativeTo: this.route })
   }
 
