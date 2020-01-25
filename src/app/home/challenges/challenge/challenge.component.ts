@@ -97,11 +97,16 @@ export class ChallengeComponent implements OnInit {
   }
 
   challengeHasAlreadyStarted(startTime: string) {
-    if (Date.parse(startTime) - Date.parse(new Date().toString()) <= 0) {
+    if (Number(startTime) - new Date().getTime() <= 0) {
       return true;
     } else {
       return false;
     }
+
+  }
+
+  onTakeMissions() {
+    this.router.navigate(['missions'], { relativeTo: this.route })
   }
 
   // Tabs operating on small screens

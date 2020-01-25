@@ -37,8 +37,9 @@
         (click)="signForTheChallenge()"
         class="sign"
       >ورود</button><button
-        *ngIf="isPlayerIn && challengeHasAlreadyStarted(challenge.startTime)"
+        *ngIf="challenge.startTime && isPlayerIn && challengeHasAlreadyStarted(challenge.startTime)"
         class="sign"
+        (click)="onTakeMissions()"
       >
         شروع بازی</button><button
         (click)="cancel()"
