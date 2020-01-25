@@ -35,7 +35,7 @@ export class UserLogService {
                 }
                 const uid = atob(localStorage.getItem('uid'))
                 if (fetchedUser.uid === uid) {
-                    console.log('Granted !!');
+                    console.log('Granted Access!');
                     const user = {
                         displayName: fetchedUser.displayName,
                         email: fetchedUser.email,
