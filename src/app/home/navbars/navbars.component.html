@@ -14,7 +14,19 @@
 <aside id="aside">
   <a (click)="onUserProfileShow()"><i class="openwebicons-info-card"></i></a>
   <!-- <a href=""><i class="iconicfill-calendar"></i></a> -->
-  <a (click)="onChallengesShow()"><i class="entypo-menu"></i></a>
+  <a
+    (click)="onChallengesShow()"
+    [class]="trying ? 'no-hover-effect': ''"
+  ><img
+      src="assets/trying.gif"
+      *ngIf="trying"
+      alt="trying"
+      style="width: 40px"
+    >
+    <i
+      *ngIf="!trying"
+      class="entypo-menu"
+    ></i></a>
   <!-- <a href=""><i class="entypo-lamp"></i></a> -->
   <a (click)="onLogout()"><i class="entypo-stop"></i></a>
 </aside>

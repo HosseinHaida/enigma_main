@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserLogService } from 'src/app/services/user-log.service';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-navbars',
@@ -11,8 +12,14 @@ export class NavbarsComponent implements OnInit {
   menuToggle = false;
   sidebar: HTMLElement;
   overlay: HTMLElement;
+  trying = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private userLogService: UserLogService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private userLogService: UserLogService,
+    private mainService: MainService
+  ) { }
 
   ngOnInit() {
     this.sidebar = document.getElementById('aside');
@@ -43,7 +50,15 @@ export class NavbarsComponent implements OnInit {
     }
   }
 
-  onChallengesShow() {
+  async onChallengesShow() {
+    this.trying = true;
+    await this.mainService.getChallengesAPI().then(challenges => {
+      this.mainService.pushChallenges(challenges);
+    });
+    await this.mainService.getGamesAPI().then(games => {
+      this.mainService.pushGames(games);
+    });
+    this.trying = false;
     this.router.navigate(['challenges'], { relativeTo: this.route });
   }
 

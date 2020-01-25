@@ -69,6 +69,10 @@ aside > a:hover {
   background-color: rgb(71, 71, 71);
   color: whitesmoke;
 }
+aside > a.no-hover-effect:hover {
+  background-color: transparent;
+  cursor: progress;
+}
 aside > a:first-child {
   margin: -1.5px -1.5px 0 -1.5px;
   border-radius: 9px 9px 0 0;
