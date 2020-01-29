@@ -71,15 +71,7 @@ export class MainService {
   getGames() {
     return [...this.games];
   }
-  getMissionsAPI(): Promise<Mission[]> {
-    return <Promise<Mission[]>>this.http.get(this.connection + '/missions').toPromise().then((object: { missions, proto }) => {
-      return object.missions
-    },
-      error => {
-        console.log(error)
-      });
-  }
-  pushMissions(missions: Mission[]) {
-    this.missions = missions;
+  getChallengeMissions(cid: string) {
+    return this.http.get(this.connection + '/missions_of/' + cid)
   }
 }

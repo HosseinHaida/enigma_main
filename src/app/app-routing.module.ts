@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProfileComponent } from './home/profile/profile.component';
+import { MissionsComponent } from './home/challenges/missions/missions.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -20,11 +21,9 @@ const routes: Routes = [
     },
     children: [
       { path: 'profile', component: ProfileComponent },
-      {
-        path: 'challenges',
-        component: ChallengesComponent
-      },
-      { path: 'challenges/:id', component: ChallengeComponent }
+      { path: 'challenges', component: ChallengesComponent },
+      { path: 'challenges/:id', component: ChallengeComponent },
+      { path: 'challenges/:id/missions', component: MissionsComponent }
     ],
     canActivate: [AuthGuard]
   },

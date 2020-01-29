@@ -1,0 +1,40 @@
+<div class="sidebar-placeholder"></div>
+
+<div style="margin: 80px 20px 30px 20px">
+    <main *ngFor="let mission of missions">
+        <header>
+            {{mission.name}}
+        </header>
+        <div>
+            <circle-progress
+                style="float: left"
+                [clockwise]="false"
+                [space]="50"
+                [percent]="mission.level"
+                [units]="''"
+                [radius]="13"
+                [subtitle]="''"
+                [title]="''"
+                [outerStrokeColor]="'#35469c'"
+                [innerStrokeColor]="'rgb(100, 100, 100)'"
+            ></circle-progress>
+            <div
+                class="mission-script"
+                [innerHTML]="sanitize(mission.script)"
+            ></div>
+            <div class="answer">
+                <div class="form-control-container">
+                    <label>پاسخ</label>
+                    <div>
+                        <input
+                            type="text"
+                            [(ngModel)]="answer"
+                        />
+                        <div class="line"></div>
+                    </div>
+                    <button (click)="onCheckAnswer()">ارسال</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

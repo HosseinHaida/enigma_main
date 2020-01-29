@@ -48,6 +48,7 @@ import { ProfileComponent } from './home/profile/profile.component'
 
 // ng-circle-progress
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { MissionsComponent } from './home/challenges/missions/missions.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     DetailsComponent,
     LoginComponent,
     PageNotFoundComponent,
-    ProfileComponent
+    ProfileComponent,
+    MissionsComponent
   ],
   imports: [
     BrowserModule,
