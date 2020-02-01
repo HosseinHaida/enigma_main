@@ -49,6 +49,7 @@ import { ProfileComponent } from './home/profile/profile.component'
 // ng-circle-progress
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { MissionsComponent } from './home/challenges/missions/missions.component';
+import { PersianTimePipe } from './home/challenges/challenge/players/persian-time.pipe';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { MissionsComponent } from './home/challenges/missions/missions.component
     LoginComponent,
     PageNotFoundComponent,
     ProfileComponent,
-    MissionsComponent
+    MissionsComponent,
+    PersianTimePipe
   ],
   imports: [
     BrowserModule,

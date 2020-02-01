@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserLogService } from 'src/app/services/user-log.service';
+import { MainService } from 'src/app/services/main.service';
 
 interface Player {
   level: number;
@@ -14,15 +15,19 @@ interface Player {
   styleUrls: ['./players.component.scss']
 })
 export class PlayersComponent implements OnInit {
-  @Input() playersList: any;
-  @Input() showHeader: boolean;
-  players: any;
-  fetchingUsersStatus: string;
+  @Input() playersList: any
+  @Input() showHeader: boolean
+  @Input() cid: string
+  players: any
+  fetchingUsersStatus: string
+  leaderboard: { uid: string, status: number }[]
 
-  constructor(private userLogService: UserLogService) { }
+  constructor(
+    private userLogService: UserLogService,
+    private mainService: MainService
+  ) { }
 
   ngOnInit() {
-    // console.log(this.playersList)
     if (this.playersList) {
       const thisthis = this
       const array = []
@@ -33,7 +38,6 @@ export class PlayersComponent implements OnInit {
 
       this.fetchingUsersStatus = 'trying';
       this.userLogService.getUsers(array).subscribe((fetchedUsers: { usersToBeSent }) => {
-        // console.log(fetchedUsers.usersToBeSent)
         thisthis.fetchingUsersStatus = null;
         thisthis.players = fetchedUsers.usersToBeSent
       },
@@ -42,7 +46,16 @@ export class PlayersComponent implements OnInit {
           thisthis.players = []
           thisthis.fetchingUsersStatus = 'failure';
         })
+      this.mainService.getLeaderboard(this.cid).subscribe((res: { leaderboard: [] }) => {
+        this.leaderboard = res.leaderboard
+        console.log(this.leaderboard)
+      }, (error) => {
+        this.leaderboard = [];
+        console.log(error)
+      })
     }
-
   }
+  // showFinishDate(timestamp: string) {
+  //   return new Date(Number(timestamp))
+  // }
 }

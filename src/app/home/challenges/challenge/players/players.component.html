@@ -14,10 +14,15 @@
       <div
         class="avatar"
         [style.backgroundImage]="'url(' + player.photoURL + ')'"
+        [ngClass]="{'top-margin' : leaderboard && leaderboard[player.uid]}"
       ></div>
     </div>
     <div class="player-right-column">
       <div class="username">{{ player.username }}</div>
+      <div
+        style="font-size: 9px; margin-bottom: 5px; padding: 2px 3px; text-align: center; background-color: #3cb87848;"
+        *ngIf="leaderboard && leaderboard[player.uid]"
+      >{{leaderboard[player.uid] | persianTime}}</div>
       <div
         class="user-level animated-width"
         [style.width.%]="player.level"

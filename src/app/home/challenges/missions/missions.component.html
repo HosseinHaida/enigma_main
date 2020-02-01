@@ -1,7 +1,7 @@
 <div class="sidebar-placeholder"></div>
 
 <div style="margin: 80px 20px 30px 20px">
-    <main *ngFor="let mission of missions">
+    <main *ngFor="let mission of missions; let i = index">
         <header>
             {{mission.name}}
         </header>
@@ -9,7 +9,7 @@
             <circle-progress
                 style="float: left"
                 [clockwise]="false"
-                [space]="50"
+                [space]="8"
                 [percent]="mission.level"
                 [units]="''"
                 [radius]="13"
@@ -23,17 +23,39 @@
                 [innerHTML]="sanitize(mission.script)"
             ></div>
             <div class="answer">
-                <div class="form-control-container">
+                <div
+                    *ngIf="!checkIfIsAnswered(mission.id)"
+                    class="form-control-container"
+                >
                     <label>پاسخ</label>
+                    <i
+                        class="fontawesome-warning-sign"
+                        style="font-style: normal; float: left; margin-left: 5px"
+                        *ngIf="result[i] === 'failed'"
+                    ></i>
+                    <img
+                        src="assets/trying.gif"
+                        alt="trying"
+                        style="font-style: normal; float: left; margin-left: 5px; width: 18px;"
+                        *ngIf="result[i] === 'trying'"
+                    >
                     <div>
                         <input
                             type="text"
-                            [(ngModel)]="answer"
+                            [(ngModel)]="answer[i]"
                         />
                         <div class="line"></div>
                     </div>
-                    <button (click)="onCheckAnswer()">ارسال</button>
+                    <button (click)="onCheckAnswer(mission.id, i)">ارسال</button>
                 </div>
+                <!-- in case is answered correctly -->
+                <span
+                    style="color: #3cb878;"
+                    *ngIf="checkIfIsAnswered(mission.id)"
+                ><span style="margin-right: 6px; font-size: 13px;">پاسخ درست</span><i
+                        class="fontawesome-ok"
+                        style="font-style: normal; margin-right: 5px"
+                    ></i></span>
             </div>
         </div>
     </main>

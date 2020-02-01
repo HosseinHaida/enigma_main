@@ -74,4 +74,16 @@ export class MainService {
   getChallengeMissions(cid: string) {
     return this.http.get(this.connection + '/missions_of/' + cid)
   }
+
+  isAnswerCorrect(mid: string, cid: string, answer: string) {
+    return this.http.post(this.connection + '/missions/' + mid + '/' + cid + '/check_answer', answer)
+  }
+
+  setFinishTime(cid: string) {
+    return this.http.post(this.connection + '/leaderboard', cid)
+  }
+
+  getLeaderboard(cid: string) {
+    return this.http.get(this.connection + '/leaderboard/' + cid)
+  }
 }

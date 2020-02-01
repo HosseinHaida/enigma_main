@@ -17,7 +17,7 @@
   .player-container {
     width: 100%;
     background-color: whitesmoke;
-    height: 40px;
+    min-height: 40px;
     margin-bottom: 10px;
     text-align: left;
     @include display-flex();
@@ -26,7 +26,8 @@
       > .avatar {
         width: 40px;
         height: 40px;
-        margin: 0 6px;
+        margin-left: 6px;
+        margin-right: 6px;
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -35,6 +36,10 @@
         -webkit-border-radius: 50%;
         &.gray {
           background: rgb(192, 192, 192);
+        }
+        
+        &.top-margin {
+          margin-top: 10px
         }
       }
     }

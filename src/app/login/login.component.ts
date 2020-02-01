@@ -29,8 +29,7 @@ export class LoginComponent implements OnInit {
       displayName: new FormControl(null, Validators.required),
       email: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
-      phoneNumber: new FormControl(null, Validators.required),
-      photoURL: new FormControl(null, Validators.required)
+      phoneNumber: new FormControl(null, Validators.required)
     });
     this.userLogService.loginStatus.subscribe(status => {
       this.loginStatusGifSource = 'assets/' + status + '.gif'
@@ -47,7 +46,7 @@ export class LoginComponent implements OnInit {
         email: form.value.email,
         password: form.value.password,
         phoneNumber: form.value.phoneNumber,
-        photoURL: form.value.photoURL
+        photoURL: 'https://cdn3.iconfinder.com/data/icons/flat-avatars-3/512/Flat_avatars_svg-01-512.png'
         // role: 'user'
       };
       this.userLogService.signNewUserUp(newUser);

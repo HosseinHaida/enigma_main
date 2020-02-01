@@ -5,6 +5,7 @@ export class Mission {
     public name: string,
     public photoPath: string,
     public script: string,
+    public answered: []
   ) { }
 }
 
