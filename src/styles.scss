@@ -1,25 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
-@import url(http://weloveiconfonts.com/api/?family=entypo|iconicfill|openwebicons|typicons|fontawesome);
-@import './assets/fonts/iranyekan/font-face/fontiran.css';
+@import url(https://weloveiconfonts.com/api/?family=entypo|iconicfill|openwebicons|typicons|fontawesome);
+@import "./assets/fonts/iranyekan/font-face/fontiran.css";
 
 * {
   font-family: iranyekan, Verdana, sans-serif;
 }
 
-[class*='entypo-']:before {
-  font-family: 'entypo', sans-serif;
+[class*="entypo-"]:before {
+  font-family: "entypo", sans-serif;
 }
-[class*='openwebicons-']:before {
-  font-family: 'OpenWeb Icons', sans-serif;
+[class*="openwebicons-"]:before {
+  font-family: "OpenWeb Icons", sans-serif;
 }
-[class*='iconicfill-']:before {
-  font-family: 'IconicFill', sans-serif;
+[class*="iconicfill-"]:before {
+  font-family: "IconicFill", sans-serif;
 }
-[class*='typicons-']:before {
-  font-family: 'typicons', sans-serif;
+[class*="typicons-"]:before {
+  font-family: "typicons", sans-serif;
 }
-[class*='fontawesome-']:before {
-  font-family: 'fontawesome', sans-serif;
+[class*="fontawesome-"]:before {
+  font-family: "fontawesome", sans-serif;
 }
 
 body {
