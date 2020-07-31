@@ -14,7 +14,9 @@ import { Game } from '../models/game.model';
 
 // Main Service
 import { MainService } from '../services/main.service';
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class MainResolver implements Resolve<[Challenge[], Game[],
   // Mission[]
 ]> {
