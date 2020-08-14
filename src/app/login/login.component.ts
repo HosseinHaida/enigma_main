@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/home/challenges']);
     }
     this.loginForm = new FormGroup({
-      email: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required)
+      email: new FormControl('mammmmad@gmail.com', Validators.required),
+      password: new FormControl('google', Validators.required)
     });
     this.signupForm = new FormGroup({
       displayName: new FormControl(null, Validators.required),
