@@ -1,5 +1,5 @@
 <section class="players">
-  <header *ngIf="showHeader">بازیکنان</header>
+  <header *ngIf="showHeader">Players</header>
   <img
     *ngIf="fetchingUsersStatus"
     [src]="'assets/' + fetchingUsersStatus + '.gif'"
@@ -20,7 +20,7 @@
     <div class="player-right-column">
       <div class="username">{{ player.username }}</div>
       <div
-        style="font-size: 9px; margin-bottom: 5px; padding: 2px 3px; text-align: center; background-color: #3cb87848;"
+        style="font-size: 10px;font-weight: bolder; margin-bottom: 5px; padding: 4px 3px 2px 3px; text-align: center; background-color: #3cb87848;"
         *ngIf="leaderboard && leaderboard[player.uid]"
       >{{leaderboard[player.uid] | persianTime}}</div>
       <div

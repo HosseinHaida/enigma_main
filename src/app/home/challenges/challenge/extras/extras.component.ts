@@ -32,10 +32,10 @@ export class ExtrasComponent implements OnInit {
       .map((x, i) => i);
   }
 
-  toFarsiNumber(n) {
-    const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-    return n.toString().replace(/\d/g, x => farsiDigits[x]);
-  }
+  // toFarsiNumber(n) {
+  //   const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+  //   return n.toString().replace(/\d/g, x => farsiDigits[x]);
+  // }
   toNumber(object: Object) {
     return Object.keys(object).length;
   }

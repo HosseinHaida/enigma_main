@@ -63,22 +63,22 @@ export class ChallengeComponent implements OnInit {
       }
       // Assigning value to corresponding headers
       if (!this.challenge.isFilled && !this.isPlayerIn) {
-        this.smallScreensCorrespondingHeader = 'اطلاعات';
+        this.smallScreensCorrespondingHeader = 'Info';
         if (!this.challenge.startTime) {
-          this.bigScreensCorrespondingHeader = 'سایر اطلاعات';
+          this.bigScreensCorrespondingHeader = 'More Info';
         }
       } else if (this.challenge.startTime) {
-        this.smallScreensCorrespondingHeader = 'شمارش';
-        this.bigScreensCorrespondingHeader = 'شمارش معکوس';
+        this.smallScreensCorrespondingHeader = 'Count';
+        this.bigScreensCorrespondingHeader = 'Countdown';
       } else if (
         !this.challenge.isFilled &&
         this.isPlayerIn &&
         !this.challenge.startTime
       ) {
-        this.smallScreensCorrespondingHeader = 'نیازمندی';
-        this.bigScreensCorrespondingHeader = 'تعداد بازیکن مورد نیاز ';
+        this.smallScreensCorrespondingHeader = 'Needs';
+        this.bigScreensCorrespondingHeader = 'Number of players needed ';
       } else if (this.challenge.isFilled && !this.challenge.startTime) {
-        this.bigScreensCorrespondingHeader = 'در انتظار برای اعلام زمان شروع'
+        this.bigScreensCorrespondingHeader = 'To be scheduled ...'
       }
     });
     this.challengePath = this.mainService.getChallengeFullUrl(

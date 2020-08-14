@@ -42,10 +42,10 @@
         class="sign"
         (click)="onGoToMissions()"
       >
-        مأموریت‌ها</button><button
+        Missions</button><button
         (click)="cancel()"
         class="cancel"
-      >برگشتن</button>
+      >Cancel</button>
     </section>
   </div>
 </main>
@@ -62,14 +62,14 @@
         class="tab-links share-tab"
         (click)="openTab($event, 'share')"
       >
-        اشتراک
+        Share
       </button>
       <span class="underline"></span>
       <button
         class="tab-links players-tab"
         (click)="openTab($event, 'players')"
       >
-        بازیکنان
+        Players
       </button>
       <span class="underline"></span>
 
@@ -77,7 +77,7 @@
         class="tab-links extras-tab"
         (click)="openTab($event, 'extras')"
       >
-        سایر
+        Extras
       </button>
       <span class="underline"></span>
       <button
@@ -159,17 +159,17 @@
         (click)="signForTheChallenge()"
         *ngIf="!isPlayerIn && !challenge.isFilled"
         class="sign"
-      >ورود</button><button
+      >Sign</button><button
         *ngIf="isPlayerIn && challengeHasAlreadyStarted(startTime)"
         class="sign"
         (
       >
-        ( ماموریت(ها
+        Mission/s
       </button>
       <button
         (click)="cancel()"
         class="cancel"
-      >برگشتن</button>
+      >Cancel</button>
     </section>
   </div>
 </main>

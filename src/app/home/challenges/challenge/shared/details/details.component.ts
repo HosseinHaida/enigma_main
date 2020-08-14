@@ -22,16 +22,16 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit() {
     if (this.challenge.players) {
-      this.numberOfNeededPlayers = this.toFarsiNumber(this.game.playersLimit - Object.keys(this.challenge.players).length)
+      this.numberOfNeededPlayers = this.game.playersLimit - Object.keys(this.challenge.players).length
     } else {
-      this.numberOfNeededPlayers = this.toFarsiNumber(this.game.playersLimit)
+      this.numberOfNeededPlayers = this.game.playersLimit
     }
   }
 
-  toFarsiNumber(n) {
-    const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-    return n.toString().replace(/\d/g, x => farsiDigits[x]);
-  }
+  // toFarsiNumber(n) {
+  //   const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+  //   return n.toString().replace(/\d/g, x => farsiDigits[x]);
+  // }
 
   toNumber(object: Object) {
     if (object) {

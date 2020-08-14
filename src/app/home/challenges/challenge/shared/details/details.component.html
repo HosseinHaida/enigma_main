@@ -1,50 +1,50 @@
 <div *ngIf="leftColumn">
-  <div class="main-title">
-    <span>{{toFarsiNumber(game.cost)}}</span>
-    <header>: ورودی این بازی</header>
-    <i class="entypo-tag"></i>
+  <div class="main-title"><i class="entypo-tag"></i>
+    <header>Price: </header>
+    <span>{{game.cost}}</span>
+    
   </div>
-  <div class="main-title">
-    <span>{{toFarsiNumber(game.prize)}}</span>
-    <header>: جایزه این بازی</header>
-    <i class="fontawesome-money"></i>
+  <div class="main-title"><i class="fontawesome-money"></i>
+    <header>Award: </header>
+    <span>{{game.prize}}</span>
+    
   </div>
 </div>
 <div *ngIf="extraContentLeft">
-  <div class="main-title">
+  <div class="main-title"><i class="entypo-key"></i>
+    <header>Fair for: </header>
     <span>۵</span>
-    <header>: حداقل سطح مجاز</header>
-    <i class="entypo-key"></i>
+    
   </div>
-  <div class="main-title">
-    <span>{{toFarsiNumber(game.level)}}</span>
-    <header>: درجه سختی</header>
-    <i class="entypo-progress-2"></i>
+  <div class="main-title"><i class="entypo-progress-2"></i>
+    <header>Intensity: </header>
+    <span>{{game.level}}</span>
+    
   </div>
 </div>
 
 <div *ngIf="rightColumn">
-  <div class="main-title">
-    <span>{{toFarsiNumber(game.playersLimit)}}</span>
-    <header>: بازیکن مورد نیاز</header>
-    <i class="entypo-help"></i>
+  <div class="main-title"><i class="entypo-help"></i>
+    <header>Players Needed: </header>
+    <span>{{game.playersLimit}}</span>
+    
   </div>
-  <div class="main-title">
-    <span>{{ toFarsiNumber(toNumber(challenge.players)) }}</span>
-    <header>: تعداد شرکت کننده</header>
-    <i class="entypo-gauge"></i>
+  <div class="main-title"><i class="entypo-gauge"></i>
+    <header>Players: </header>
+    <span>{{ toNumber(challenge.players) }}</span>
+    
   </div>
 </div>
 <div *ngIf="extraContentRight">
-  <div class="main-title">
+  <div class="main-title"><i class="entypo-address"></i>
+    <header>Location: </header>
     <span>{{game.city}} - {{game.region}}</span>
-    <header>: موقعیت</header>
-    <i class="entypo-address"></i>
+    
   </div>
-  <div class="main-title">
-    <span>{{ toFarsiNumber(game.missions.length) }}</span>
-    <header>: تعداد مراحل</header>
-    <i class="entypo-flow-tree"></i>
+  <div class="main-title"><i class="entypo-flow-tree"></i>
+    <header>Levels</header>
+    <span>{{ game.missions.length }}</span>
+    
   </div>
 </div>
 
@@ -52,8 +52,8 @@
   <div
     *ngIf="!challenge.isFilled && !isPlayerIn"
     class="main-title players-left"
-  >
-    <header>.جای خالی باقی مانده است</header>
-    <span>{{numberOfNeededPlayers}}</span>
+  ><span>{{numberOfNeededPlayers}}</span>
+    <header>Empty Spots remaining</header>
+    
   </div>
 </div>

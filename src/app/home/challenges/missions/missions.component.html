@@ -27,7 +27,7 @@
                     *ngIf="!checkIfIsAnswered(mission.id)"
                     class="form-control-container"
                 >
-                    <label>پاسخ</label>
+                    <label>Answer</label>
                     <i
                         class="fontawesome-warning-sign"
                         style="font-style: normal; float: left; margin-left: 5px"
@@ -46,13 +46,13 @@
                         />
                         <div class="line"></div>
                     </div>
-                    <button (click)="onCheckAnswer(mission.id, i)">ارسال</button>
+                    <button (click)="onCheckAnswer(mission.id, i)">Send</button>
                 </div>
                 <!-- in case is answered correctly -->
                 <span
                     style="color: #3cb878;"
                     *ngIf="checkIfIsAnswered(mission.id)"
-                ><span style="margin-right: 6px; font-size: 13px;">پاسخ درست</span><i
+                ><span style="margin-right: 6px; font-size: 13px;">Correct Answer</span><i
                         class="fontawesome-ok"
                         style="font-style: normal; margin-right: 5px"
                     ></i></span>

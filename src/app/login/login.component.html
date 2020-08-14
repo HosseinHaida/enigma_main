@@ -9,7 +9,7 @@
       [checked]="formType === 'login'"
     />
     <label for="login">
-      ورود
+      Login
     </label>
     <input
       id="signup"
@@ -20,7 +20,7 @@
       [checked]="formType === 'signup'"
     />
     <label for="signup">
-      ثبت نام
+     Signup
     </label>
   </div>
 </div>
@@ -37,18 +37,18 @@
       <div class="username">
         <input
           type="text"
-          placeholder="آدرس ایمیل"
+          placeholder="Email"
           onfocus="this.placeholder = ''"
-          onblur="this.placeholder = 'آدرس ایمیل'"
+          onblur="this.placeholder = 'Email'"
           formControlName="email"
         />
       </div>
       <div class="password">
         <input
           type="password"
-          placeholder="کلمه عبور"
+          placeholder="Password"
           onfocus="this.placeholder = ''"
-          onblur="this.placeholder = 'کلمه عبور'"
+          onblur="this.placeholder = 'Password'"
           formControlName="password"
         />
       </div>
@@ -72,40 +72,40 @@
       <div class="display-name">
         <input
           type="text"
-          placeholder="نام کاربری"
+          placeholder="Username"
           onfocus="this.placeholder = ''"
-          onblur="this.placeholder = 'نام کاربری'"
+          onblur="this.placeholder = 'Username'"
           formControlName="displayName"
         />
       </div>
       <div class="cellphone">
         <input
           type="text"
-          placeholder="تلفن همراه"
+          placeholder="Phone"
           onfocus="this.placeholder = ''"
-          onblur="this.placeholder = 'تلفن همراه'"
+          onblur="this.placeholder = 'Phone'"
           formControlName="phoneNumber"
         />
       </div>
       <div class="username">
         <input
           type="text"
-          placeholder="آدرس ایمیل"
+          placeholder="Email"
           onfocus="this.placeholder = ''"
-          onblur="this.placeholder = 'آدرس ایمیل'"
+          onblur="this.placeholder = 'Email'"
           formControlName="email"
         />
       </div>
       <div class="password">
         <input
           type="password"
-          placeholder="کلمه عبور"
+          placeholder="Password"
           onfocus="this.placeholder = ''"
-          onblur="this.placeholder = 'کلمه عبور'"
+          onblur="this.placeholder = 'Password'"
           formControlName="password"
         />
       </div>
-      <div class="button"><button type="submit">ثبت نام</button></div>
+      <div class="button"><button type="submit">Signup</button></div>
     </form>
     <img
       *ngIf="signupStatusGifSource && formType === 'signup'"

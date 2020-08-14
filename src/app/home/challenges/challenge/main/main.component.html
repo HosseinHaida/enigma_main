@@ -7,7 +7,7 @@
       class="header-button active"
       (click)="toggleContent(false)"
     >
-      اطلاعات بیشتر
+      More Info
     </button>
     <button
       *ngIf="!countdownsPermitted && isPlayerIn"
@@ -15,7 +15,7 @@
       class="header-button share"
       (click)="toggleContent(true)"
     >
-      اشتراک گذاری
+      Share
     </button>
   </header>
   <div
@@ -72,8 +72,8 @@
       class="players-countdown"
     >
       <div class="number">
-        <span class="player-text">بازیکن</span>
-        <span class="player-number">{{ toFarsiNumber(playersNeeded) }}</span>
+        <span class="player-text">Player</span>
+        <span class="player-number">{{ playersNeeded }}</span>
       </div>
 
       <span
